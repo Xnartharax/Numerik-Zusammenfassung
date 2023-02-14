@@ -187,55 +187,49 @@
 		Die Kondition einer linearen Gleichung $Ax= b$ hängt nur von $A$ ab und ist:
 		$$\kappa(A) = ||A||||A^{-1}||$$
 	\end{theorem}
-	
-	\section{Appendix: Matlab Implementationen}
-	\begin{lstlisting}[language=matlab]
-		function x=backwardsub(U, b)
-			n = length(b);
-			x = zeros(n, 1);
-			for i=n:-1:1
-				x(i) = (b(i) - U(i, i+1:n)*x(i+1:n))/U(i, i);
-			end
-		end
-		function x=forwardsub(L, b)
-			x = zeros(1, length(b));
-			x(1) = b(1)/L(1, 1);
-			for i=2:length(b)
-				x(i) = (b(i) - L(i, 1:i-1)*x(1:i-1)')/L(i,i);
-			end
-		end 
-		function [L, U]=lu_decomp(A)
-			n = size(A, 1);
-			for i=1:n
-				if A(i, i) == 0
-					error("Alle Pivotelemente muessen ungleich 0 sein")
-				end
-				A(i+1:n,i) =  A(i+1:n,i)/A(i, i);
-				A(i+1:n,i+1:n) = A(i+1:n,i+1:n) - A(i+1:n,i)*A(i, i+1:n);
-			end
-			U = triu(A);
-			L = tril(A);
-			for i=1:n
-				L(i, i)=1;
-			end
-		end
-		function [L, U, p]=lu_decomp_pivot(A)
-			n = size(A, 1);
-			p = 1:n;
-			for i=1:n
-				% pivot search
-				[~, j] = max(abs(A(i:n,i))); % search for the argmax in A^k
-				j = j + i-1; % correct the index for the global matrix A
-				p ([ i j ]) = p ([ j i ]) ; A ([ i j ] ,:) = A ([ j i ] ,:) ;
-				% elimination step
-				A(i+1:n,i) =  A(i+1:n,i)/A(i, i);
-				A(i+1:n,i+1:n) = A(i+1:n,i+1:n) - A(i+1:n,i)*A(i, i+1:n);
-				end
-			U = triu(A);
-			L = tril(A);
-			for i=1:n
-				L(i, i)=1;
-			end
-		end
-	\end{lstlisting}
+	\section{Ausgleichsrechnung}
+	\begin{definition}[Lineares Ausgleichsproblem]
+		Sei $A\in \mathbb{R}^{n\times n}, b\in \mathbb{R}^n$ mit $m\leq n$. Gesucht ist $x\in \mathbb{R}^m$. Sodass $$||Ax-b||_2$$ minimiert wird. Es wird im Generellen angenommen, dass $Rang(A) = m$.
+	\end{definition}
+	\begin{definition}[Normalengleichung]
+		Gegeben ein Ausgleichsproblem $A, b$, nennt man:
+		$$A^TAx=A^Tb$$
+		die Normalengleichung.
+	\end{definition}
+	\begin{theorem}[Lösung des Linearen Ausgleichproblems mittels Normalengleichung]
+		Die Lösung der Normalengleichung ist das eindeutige gesuchte Minimum des Ausgleichsproblems.
+	\end{theorem}
+	\begin{algorithm}
+		\caption{Lösen des Ausgleichproblems mittels Normalengleichung}
+		\begin{algorithmic}
+			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^n$
+			\State $L \leftarrow$ Cholesky$(A^TA)$
+			\State Löse $LL^Tx = A^Tb$ durch Vorwärts und Rückwärtsssubsitution.
+		\end{algorithmic}
+	\end{algorithm}
+	Die Stabilität des Algorithmus hängt von der Stabilität der Matrixmultiplikation $A^TA$ ab. 
+	Falls $\kappa(A^TA)$ groß ist und $||Ax-b||$ klein treten hier Stabilitätsprobleme auf. Um diesen entgegen zu wirken, kann man die Orthogonalisierungsmethode verwenden.
+	\begin{algorithm}
+		\caption{Lösen des Ausgleichproblems mittels QR-Methode}
+		\begin{algorithmic}
+			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^n$
+			\State Zerlege $A= Q\hat{R}$ mit $\hat{R} = \begin{bmatrix}
+				R\\
+				0
+			\end{bmatrix}$ wobei $R\in \mathbb{R}^{m\times m}$ obere Dreiecksmatrix sei.
+			\State Löse $Rx = (Q^Tb)_1$ wobei $(.)_1$ die ersten $m$ Elemente seien.
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}[Aufwand der Lösungsmethoden]
+		Der Aufwand beträgt:
+		\begin{enumerate}
+			\item Normalengleichung: $nm^2 + \frac{m^3}{3}$.
+			\item QR-Methode: $2nm^2-2\frac{m^3}{3}$
+		\end{enumerate}
+		Für $n >> m$ ist also die QR-Methode doppelt so teuer wie der Ansatz der Normalengleichung. 
+	\end{theorem}
+	\begin{theorem}[Kondition der Normalengleichung]
+		Sei $A \in \mathbb{R}^{n\times m}$ und $R$ wie in der Zerlegung für die QR-Methode. Es gilt:
+		$$\kappa(A^TA) = \kappa(R)^2$$
+	\end{theorem}
 \end{document}

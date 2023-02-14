@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.30)  14 FEB 2023 14:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.30)  14 FEB 2023 15:27
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**document.tex
-(./document.tex
+**c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex
+(c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-10-18>
-(c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2021-10-18> (c:/texlive/2021/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
 (c:/texlive/2021/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
@@ -22,33 +22,27 @@ File: size10.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-)
-(c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
-)
-(c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-)
-(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/04/20 v2.17j AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
 (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
-(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen139
-))
-(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen140
-)
-(c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count190
@@ -88,37 +82,29 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
-)
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-))
-(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+)) (c:/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
-)
-(c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (c:/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
-
-(c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+ (c:/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen148
@@ -126,29 +112,23 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 )
 \c@theorem=\count268
 \c@definition=\count269
-
-(c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
-
-(c:/texlive/2021/texmf-dist/tex/latex/float/float.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (c:/texlive/2021/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count270
 \float@exts=\toks24
 \float@box=\box52
 \@float@everytoks=\toks25
 \@floatcapt=\box53
-)
-(c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks26
 \c@algorithm=\count271
-)
-(c:/texlive/2021/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
 Package: algpseudocode 
-
-(c:/texlive/2021/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
 
 Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
@@ -177,32 +157,25 @@ Document Style - pseudocode environments for use with the `algorithmicx' style
 \lst@newlines=\count283
 \lst@lineno=\count284
 \lst@maxwidth=\dimen153
-
-(c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
+ (c:/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 \c@lstnumber=\count285
 \lst@skipnumbers=\count286
 \lst@framebox=\box55
-)
-(c:/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
+) (c:/texlive/2021/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-
-(c:/texlive/2021/texmf-dist/tex/latex/lstaddons/lstautogobble.sty
-Package: lstautogobble 2012/05/03 v0.1 Implements 'autogobble' option for 'list
-ings'
+ (c:/texlive/2021/texmf-dist/tex/latex/lstaddons/lstautogobble.sty
+Package: lstautogobble 2012/05/03 v0.1 Implements 'autogobble' option for 'listings'
 \lstag@spacecount=\count287
-)
-(c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+) (c:/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
-(c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count288
 \l__pdf_internal_box=\box56
-)
-(./document.aux)
+) (./document.aux)
 \openout1 = `document.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -219,8 +192,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
-
-(c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count289
 \scratchdimen=\dimen154
@@ -235,38 +207,26 @@ LaTeX Font Info:    ... okay on input line 18.
 \everyMPtoPDFconversion=\toks29
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \c@lstlisting=\count295
 LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
-
-
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
-
-
-(c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
+ (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Overfull \hbox (8.24828pt too wide) in paragraph at lines 22--23
-\T1/cmr/m/it/10 Eigen-werte von $\OML/cmm/m/it/10 A$ \T1/cmr/m/it/10 en-thal-te
-n in $[][] \OML/cmm/m/it/10 S[] \OMS/cmsy/m/n/10 ^^Z \U/msb/m/n/10 C$\T1/cmr/m/
-it/10 , dabei sind die $\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 := \OML/cmm/m/it/1
-0 K\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]; [][]\OT1/cmr/m/n/10 )$\T1/cmr/m/it/10
- .
+\T1/cmr/m/it/10 Eigen-werte von $\OML/cmm/m/it/10 A$ \T1/cmr/m/it/10 en-thal-ten in $[][] \OML/cmm/m/it/10 S[] \OMS/cmsy/m/n/10 ^^Z \U/msb/m/n/10 C$\T1/cmr/m/it/10 , dabei sind die $\OML/cmm/m/it/10 S[] \OT1/cmr/m/n/10 := \OML/cmm/m/it/10 K\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a[]; [][]\OT1/cmr/m/n/10 )$\T1/cmr/m/it/10 .
  []
 
 
 Overfull \hbox (13.66241pt too wide) in paragraph at lines 28--64
-\T1/cmr/m/n/10 aus dem End-schritt des Lösens von Gle-ichungssys-te-men mit dem
- Gauÿ-Algorithmus
+\T1/cmr/m/n/10 aus dem End-schritt des Lösens von Gle-ichungssys-te-men mit dem Gauÿ-Algorithmus
  []
 
 [1
@@ -284,81 +244,30 @@ Package pdftex.def Info: FehlerWilkinson.png  used on input line 160.
 (pdftex.def)             Requested size: 292.09052pt x 252.19156pt.
 
 Overfull \hbox (3.29784pt too wide) in paragraph at lines 165--166
-[]\T1/cmr/m/it/10 Wir definieren für eine Tu-pel $\OML/cmm/m/it/10 T \OT1/cmr/m
-/n/10 = (\OML/cmm/m/it/10 A[]; A[]; :::; A[]\OT1/cmr/m/n/10 )$
+[]\T1/cmr/m/it/10 Wir definieren für eine Tu-pel $\OML/cmm/m/it/10 T \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 A[]; A[]; :::; A[]\OT1/cmr/m/n/10 )$
  []
 
 [4 <./FehlerWilkinson.png>]
-Overfull \hbox (20.91344pt too wide) in paragraph at lines 196--197
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-] 
+Overfull \hbox (10.71967pt too wide) in paragraph at lines 195--196
+[]\T1/cmr/m/it/10 Gegeben ein Aus-gle-ich-sprob-lem $\OML/cmm/m/it/10 A; b$\T1/cmr/m/it/10 , nennt
  []
 
 
-Overfull \hbox (20.91344pt too wide) in paragraph at lines 203--204
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (67.20612pt too wide) in paragraph at lines 200--201
+[]
  []
 
-
-Overfull \hbox (104.89357pt too wide) in paragraph at lines 210--211
-[][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (92.89641pt too wide) in paragraph at lines 213--214
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
- []
-
-[5]
-Overfull \hbox (104.89357pt too wide) in paragraph at lines 226--227
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (86.89783pt too wide) in paragraph at lines 227--228
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (116.89073pt too wide) in paragraph at lines 228--229
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (92.89641pt too wide) in paragraph at lines 231--232
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
- []
-
-[6] (./document.aux) ) 
+[5] [6] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 5534 strings out of 478579
- 72214 string characters out of 5857457
- 587285 words of memory out of 5000000
- 23381 multiletter control sequences out of 15000+600000
+ 4697 strings out of 478579
+ 63958 string characters out of 5857457
+ 565285 words of memory out of 5000000
+ 22543 multiletter control sequences out of 15000+600000
  419018 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,12n,66p,354b,2144s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-s
-uper-t1.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.e
-nc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive
-/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb><c:/texlive/2021/texm
-f-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fon
-ts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/p
-ublic/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-s
-uper/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1
-728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on document.pdf (6 pages, 346796 bytes).
+ 57i,12n,66p,417b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on document.pdf (6 pages, 346993 bytes).
 PDF statistics:
  116 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
