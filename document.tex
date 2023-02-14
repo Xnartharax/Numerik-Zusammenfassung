@@ -232,4 +232,24 @@
 		Sei $A \in \mathbb{R}^{n\times m}$ und $R$ wie in der Zerlegung für die QR-Methode. Es gilt:
 		$$\kappa(A^TA) = \kappa(R)^2$$
 	\end{theorem}
+	\section{Eigenwertapproximation}
+	Eine Einfache Idee um einen einzelnen Eigenwert mit Eigenwert einer Matrix $A\in \mathbb{R}^{n\times n}$ zu bestimmen, ist die Vektoriteration. Diese beruht darauf, dass Eigenräume hoffentlich anziehende Fixpunkte sind.
+	\begin{algorithm}
+		\caption{Vektoriteration}
+		\begin{algorithmic}
+			\Require $A\in \mathbb{R}^{n\times n}$ und Startvektor $x^{(0)}\in \mathbb{R}^n$.
+			\For{$i=1,2,3,...$}
+				\State $y^{(i)} \leftarrow Ax^{(i-1)}$
+				\State $\lambda^(i-1) \leftarrow (x^(i-1))^Ty^{(i)}$
+				\State $x^{(i)} \leftarrow \frac{y^{(i)}}{||y^{(i)}||}$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}[Konvergenz der Vektoriteration]
+		Sei $A\in \mathbb{R}^{n \times n}$ mit EW $|\lambda_n| \leq ... \leq |\lambda_2| < |\lambda_1|$ und EV $(v_i)_{i\in [n]}$. Dann gilt:
+		$$|\lambda^{(i)}-\lambda_1| \leq C_1(x^{(0)})\vert\frac{\lambda_2}{\lambda_1}\vert^{2i}$$
+		$$\Vert\text{sign}(\lambda_1)^ix^{(i)} - \text{sign}(\beta_1)v_1\Vert_2 \leq C_2(x^{(0)})|\frac{\lambda_2}{\lambda_1}|^i$$
+		Wobei $\beta_1 := v^T_1x^{(0)}$ und $C_1, C_2$ Konstanten sind die vom Startwertabhängen
+	\end{theorem}
+	Durch diese Methode lässt sich nur ein einzelner Eigenvektor und auch nur der zum Betragsmäßig größten Eigenwert bestimmen. Um andere Eigenvektor zu berechnen, nutzen wir, dass der Betragsmäßig größte Eignewert von $(A-\mu I)^{-1}$ der Kerwehrt des nächsten Egenwerts an $\mu$ ist.
 \end{document}
