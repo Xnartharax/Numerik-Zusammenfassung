@@ -1,0 +1,241 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{listings, lstautogobble}
+\lstset{
+	language=Matlab, autogobble=true
+}
+\title{Numerik MA0008: Zusammenfassung}
+\author{Jonas Treplin}
+\begin{document}
+	\maketitle
+	\section{Grundlagen}
+	\begin{theorem}[Satz von Gerschgorin]
+		Sei $(a_{ij})=A \in \mathbb{R}^{n\times n}$ dann sind die Eigenwerte von $A$ enthalten in $\bigcup_{i=1}^{n}S_i \subset \mathbb{C}$, dabei sind die $S_i := K(a_{ii}, \sum_{j=1, i\neq j}^{n})$. Wobei mindestens ein Eigenwert jeder Zusammenhangskomponente zugeordnet ist.
+	\end{theorem}
+	\section{Matrixfaktorisierung}
+	\begin{theorem}
+		Die Permutationsmatrizen, die unitären Matrizen, die invertierbaren Matrizen und die unteren/oberen Dreiecksmatrizen bilden jeweils unter Matrixmultiplikation eine Gruppe. Insbesondere sind ihre Inverse von der selben Klasse von Matrizen. 
+	\end{theorem}
+	Gleichungssysteme für die unitären Matrizen (und damit auch Permutationsmatrizen) lassen sich einfach durch adjungieren lösen. Für untere und obere Dreiecksmatrizen existieren Vorwärts- und Rückwärtssubsitution.  Diese sind aus dem Endschritt des Lösens von Gleichungssystemen mit dem Gauß-Algorithmus bekannt.
+	\begin{algorithm}
+		\caption{Vorwärtssubsitution (Lösen einer unteren Dreiecksmatrix)}
+		\begin{algorithmic}
+			\Require $(l_{ij}) = L \in \mathbb{R}^{n\times n}$ Untere Dreiecksmatrix, $b \in \mathbb{R}^n$.
+			\For{$i\in 1:n$}
+				\State $x_i \leftarrow \frac{1}{l_{ii}}(b_i - \sum_{j=1}^{i-1}l_{ij}*x_j)$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{algorithm}
+		\caption{Rückwärtsssubsitution (Lösen einer oberen Dreiecksmatrix)}
+		\begin{algorithmic}
+			\Require $(u_{ij}) = U \in \mathbb{R}^{n\times n}$ Obere Dreiecksmatrix, $b \in \mathbb{R}^n$.
+			\For{$i\in n:1$}
+			\State $x_i \leftarrow \frac{1}{u_{ii}}(b_i - \sum_{j=i+1}^{n}u_{ij}*x_j)$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Glücklicherweise kann jede invertierbare Matrix (fast eindeutig) in solche Matrizen zerlegt werden. Dies geschieht Wahlweise durch eine LU-Zerlegung oder eine QR-Zerlegung.
+	\begin{algorithm}
+		\caption{LU-Zerlegung ohne Pivots}
+		\begin{algorithmic}
+			\Require $(a_{ij}) = A \in GL(n)$
+			\For{$i\in 1:n$}
+				\State $l_{ii} \leftarrow 1$
+				\For{$j \in i+1:n$}
+					\State $l_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
+					\For{$k\in i:n$}
+						\State $u_{jk} \leftarrow u_{jk} - a_{ji}a_{ji}$
+					\EndFor
+				\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Mit Pivots erreicht man, dass jede invertierbare Matrix $A \in GL(n)$ zerlegt werden kann, sodass $PA = LU$. Dazu wählt man in jedem Schritt $i$ die Zeile $j = \arg \max_{j\geq i} |a^i_{ji}|$ und vertauscht diese mit der $i$-ten Zeile. 
+	\begin{theorem}[LU-ZErlegung mit Pivots]
+		Sei $A \in GL(n)$. Dann existieren eine eindeutige Permutationsmatrix $P$, sowie untere (obere) Dreiecksmatrix $L$ ($U$, sodass $PA =LU$. Dabei ist $L$ normiert also $l_{ii}= 1$.
+	\end{theorem}
+	\begin{theorem}[Cholesky-Zerlegung]
+		Sei $A$ symmetrisch positiv definit dann lässt sich eine nicht normierte untere Dreiecksmatrix $\tilde{L}$ finden, sodass $A = \tilde{L}\tilde{L}^T$.
+	\end{theorem}
+	\begin{algorithm}
+		\caption{Berechnung der Cholesky Zerlegung}
+		\begin{algorithmic}
+			\Require $A$ s.p.d.
+			\State $L, U \leftarrow \text{LU\_Zerlegung(A)}$
+			\State $D = (u_{ii})$ Diagonalmatrix.
+			\State $\tilde{L} = \sqrt{D}L$.
+		\end{algorithmic}
+	\end{algorithm}
+	Eine weitere Möglichkeit ist die der $QR$ Zerlegung. 
+	\begin{definition}[Givensrotation]
+		Für ein $a \in \mathbb{R}^2$ sei $Q=\begin{bmatrix}
+			c & s \\
+			-s & c
+		\end{bmatrix}$. Wobei $c=\frac{1}{\sqrt{1+\tau^2}}$ und $s=c\tau$ mit $\tau = \frac{v_2}{v_1}$ wenn $|v_1| \geq |v_2|$ und  $s=\frac{1}{\sqrt{1+\tau^2}}$ und $c=s\tau$ mit $\tau = \frac{v_1}{v_2}$ wenn $|v_1| < |v_2|$.
+	\end{definition}
+	Diese Fallunterscheidung ist so gewählt, dass $||Q||\leq 1$, damit sich Rundungsfehler nicht akkumulieren.
+	\begin{theorem}[Givens-Rotation]
+		Es gilt $Qa = \xi e_1$.
+	\end{theorem}
+	\begin{algorithm}[H]
+		\caption{QR-Zerlegung mit Givens-Rotationen}
+		\begin{algorithmic}
+			\Require $A \in \mathbb{R}^{n\times m}$
+			\State $Q \leftarrow I_n$
+			\For{$i \in [n]$}
+				\For{$j \in (n, ..., i+1)$}
+					\State $G : = \begin{bmatrix}
+					1 &  &  &  &  &  \\
+					& \ddots &  &  &  &  \\
+					&  & c & s &  &  \\
+					&  & -s & c &  &  \\
+					&  &  &  & \ddots &  \\
+					&  &  &  &  & 1
+				\end{bmatrix} \leftarrow Givens(\begin{Bmatrix}
+						A_{ji-1} \\
+						A_{ji}
+					\end{Bmatrix})$
+					\State $Q \leftarrow GQ$
+					\State $A \leftarrow GA$
+				\EndFor
+			\EndFor
+			\State $Q \leftarrow Q*$
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{definition}[Householder Spiegelung]
+		Die Householder Spiegelung für einen Vektor $a \in \mathbb{R}^n$ ist:
+		$$Q := Id -\frac{2}{v^Tv}vv^T$$
+		Wobei $v :=a+\text{sign}(a_1)||a||e_1$
+		Sie erfüllt ebenfalls $Qa = \alpha e_1$
+	\end{definition}
+	\begin{algorithm}
+		\caption{QR-Zerlegung mit Householder Rotationen}
+		\begin{algorithmic}
+			\Require \Require $A \in \mathbb{R}^{n\times m}$
+			\State $Q \leftarrow I_n$
+			\For{$i \in [n]$}
+			
+			\State $H \leftarrow \begin{bmatrix}
+				1 & & &    \\
+				& \ddots & & \\
+				& & 1 & \\
+				& & & \text{Householder}((a_i, ..., a_n))
+			\end{bmatrix}$
+			\State $Q \leftarrow HQ$
+			\State $A \leftarrow HA$
+			
+			\EndFor
+			\State $Q \leftarrow Q*$
+		\end{algorithmic}
+	\end{algorithm}
+	Die QR-Zerlegung ist der LU-Zerlegung hinsichtlich numerischer Stabilität überlegen, besonders bei Betrachtung der Wilkinson-Matrix:
+	\begin{definition}[Wilkinson-Matrix]
+		Die Wilinson-Matrix ist definiert als:
+		$$W_n := \begin{bmatrix}
+			1 & 0 & ... & 0 & 1\\
+			-1 & \ddots & ... & \vdots & \vdots\\
+			\vdots& & & \ddots & \vdots\\
+			-1 & ... & ... & \dots&1
+		\end{bmatrix}$$
+		Ein besonders instabiler Lösungsvektor ist $b_n = \begin{bmatrix}
+			0\\
+			\frac{1}{n}\\
+			\vdots\\
+			\frac{n-2}{n}\\
+			1
+		\end{bmatrix}$
+	\end{definition}
+	\begin{figure}
+		\centering
+		\includegraphics{"FehlerWilkinson.png"}
+		\caption{Fehler beim Lösen von $W_nx =b_n$}
+	\end{figure}
+	\section{Fehlerrechnung}
+	\begin{definition}[Fehlermaße]
+		Wir definieren für eine Tupel $T= (A_1, A_2, ..., A_n)$ mit Störung $\tilde{T}=(A_+E_1, ..., A_n+E_n)$:
+		\begin{itemize}
+			\item das absolute Fehlermaß:
+			$$[[E]]_{abs} := \max||E_i||$$
+			\item das relative Fehlermaß:
+			$$[[E]]_{rel}:= \max\frac{||E_i||}{||A_i||}$$
+		\end{itemize}
+	\end{definition}
+	\begin{definition}[Maschinenepsilon]
+		Das \textbf{Maschinen-$\epsilon$} is der relative Fehler, der bei Addition und Multiplikation von SKalaren auftritt. Er liegt für IEEE double-precision bei ca. $10^{-16}$
+	\end{definition}
+	\begin{definition}[Kondition]
+		Die Kondition einer Abbildung $f$ im Punkt $x$ ist definiert als:
+		$$\kappa(f, x) = \limsup_{y\to x}\frac{[[f(y)-f(x)]]}{||y-x||}$$
+		Man unterscheidet zwischen:
+		\begin{itemize}
+			\item \textbf{gut konditionierten} Problemen: $\kappa(f,x) ~ O(1)$
+			\item \textbf{schlecht konditionierten} Problemen: $\kappa(f, x) >> 1$
+			\item \textbf{schlecht gestellten} Problemen: $\kappa(f, x) = \infty$
+		\end{itemize}
+	\end{definition}
+	\begin{theorem}
+		Die Kondition einer linearen Gleichung $Ax= b$ hängt nur von $A$ ab und ist:
+		$$\kappa(A) = ||A||||A^{-1}||$$
+	\end{theorem}
+	
+	\section{Appendix: Matlab Implementationen}
+	\begin{lstlisting}[language=matlab]
+		function x=backwardsub(U, b)
+			n = length(b);
+			x = zeros(n, 1);
+			for i=n:-1:1
+				x(i) = (b(i) - U(i, i+1:n)*x(i+1:n))/U(i, i);
+			end
+		end
+		function x=forwardsub(L, b)
+			x = zeros(1, length(b));
+			x(1) = b(1)/L(1, 1);
+			for i=2:length(b)
+				x(i) = (b(i) - L(i, 1:i-1)*x(1:i-1)')/L(i,i);
+			end
+		end 
+		function [L, U]=lu_decomp(A)
+			n = size(A, 1);
+			for i=1:n
+				if A(i, i) == 0
+					error("Alle Pivotelemente muessen ungleich 0 sein")
+				end
+				A(i+1:n,i) =  A(i+1:n,i)/A(i, i);
+				A(i+1:n,i+1:n) = A(i+1:n,i+1:n) - A(i+1:n,i)*A(i, i+1:n);
+			end
+			U = triu(A);
+			L = tril(A);
+			for i=1:n
+				L(i, i)=1;
+			end
+		end
+		function [L, U, p]=lu_decomp_pivot(A)
+			n = size(A, 1);
+			p = 1:n;
+			for i=1:n
+				% pivot search
+				[~, j] = max(abs(A(i:n,i))); % search for the argmax in A^k
+				j = j + i-1; % correct the index for the global matrix A
+				p ([ i j ]) = p ([ j i ]) ; A ([ i j ] ,:) = A ([ j i ] ,:) ;
+				% elimination step
+				A(i+1:n,i) =  A(i+1:n,i)/A(i, i);
+				A(i+1:n,i+1:n) = A(i+1:n,i+1:n) - A(i+1:n,i)*A(i, i+1:n);
+				end
+			U = triu(A);
+			L = tril(A);
+			for i=1:n
+				L(i, i)=1;
+			end
+		end
+	\end{lstlisting}
+\end{document}
