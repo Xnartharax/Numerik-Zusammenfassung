@@ -252,4 +252,40 @@
 		Wobei $\beta_1 := v^T_1x^{(0)}$ und $C_1, C_2$ Konstanten sind die vom Startwertabhängen
 	\end{theorem}
 	Durch diese Methode lässt sich nur ein einzelner Eigenvektor und auch nur der zum Betragsmäßig größten Eigenwert bestimmen. Um andere Eigenvektor zu berechnen, nutzen wir, dass der Betragsmäßig größte Eignewert von $(A-\mu I)^{-1}$ der Kerwehrt des nächsten Egenwerts an $\mu$ ist.
+	\begin{algorithm}[H]
+		\caption{Inverse Vektoriteration}
+		\begin{algorithmic}
+			\Require $A\in \mathbb{R}^{n\times n}$ und Startvektor $x^{(0)}\in \mathbb{R}^n$, sowie shift $\mu \in \mathbb{R}$.
+			\For{$i=1,2,...$}
+			\State $(A-\mu I)\omega^{(i)} = x^{(i-1)}$
+			\State $\eta \leftarrow \Vert \omega^{(i)}\Vert_2$
+			\State $x^{(i)} \leftarrow \omega^{(i)}/\eta$
+			\State $\rho \leftarrow {x^{(i)}}^Tx^{(i-1)}/\eta$
+			\State $\lambda^{(i)} \leftarrow \mu + \rho$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Der Aufwand hängt hier davon ab, wie oft der Shiftparameter $\mu$ neu berechnet wird, dann ist jedes Mal eine LU-Zerlegung mit $O(n^3)$ Schritten nötig. Ansonsten kostet jeder Schritt $O(n^2)$ Operation hauptsächlich für Vorwärts und Rückwärtsssubsitution. \\
+	Um alle Eigenwerte gleichzeitig zu bestimmen kann iterativ eine Schur-Zerlegung berechnet werden. Dies geschieht mit der QR-Iteration.
+	\begin{algorithm}[H]
+		\caption{QR-Iteration ohne Shift}
+		\begin{algorithmic}
+			\Require $A\in \mathbb{R}^{n \times n}$
+			\State $A_0 \leftarrow Q_0^TAQ_0$ mit $Q\in U(n)$.
+			\For{$i=1,2,3, ...$}
+			\State Bestimme $Q_iR_i = A_{i-1}$
+			\State $A_{i} \leftarrow R_iQ_i$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Der Algorithmus beruht auf der Tatsache, dass $RQ \sim A$ also die gleichen EW wie $A$ hat.
+	\begin{theorem}[Konvergenz der QR-Iteration]
+		Sei $A\in \mathbb{R}^n$ symmetrisch und mit EW $|\lambda_1|> |\lambda_2| > ... > |\lambda_m| > 0$. Sei $A = V\Lambda V^T$ diagonalisiert mit $V$ orthogonal. Besitzt $(Q_0^TV)^{-1}$ eine normierte LU-Zerlegung, dann gilt:
+		\begin{enumerate}
+			\item $\lim_{k\to \infty} |(Q_k)_{ij}| = \delta_{ij}$
+			\item $\lim_{k\to \infty} |(R_k)_{ij}| = \delta_{ij}|\lambda_i|$
+			\item $\lim_{k\to \infty} (A_k)_{ij} = \delta_{ij}\lambda_i$
+		\end{enumerate}
+	\end{theorem}
+	Der Beweis kann auf schwächere Bedingungen ausgweitet werden zum Beispiel sind mehrfache Eigenwerte auch erlaubt. Häufig kann die QR-Iteration auch auf nicht-symmetrische Matrizen angewendet werden, wenn sie in diesem Fall konvergiert dann allerdings nicht mehr gegen eine Diagonal-, sondern obere Dreiecksmatrix. 
 \end{document}
