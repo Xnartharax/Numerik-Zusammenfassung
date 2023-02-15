@@ -352,7 +352,7 @@
 		$$\omega := (R)_{1:i-1,i}$$
 		Dann hat der $i$-te Eigenvektor von $R$ die Form:
 		$$v_i = \begin{pmatrix}
-			(R^(i))^{-1}\omega \\
+			(R^{(i)})^{-1}\omega \\
 			-1 \\
 			0 \\
 			\vdots \\
@@ -372,4 +372,56 @@
 		$$|\mu-\lambda_mu|\leq \Vert T\Vert_p\Vert T^{-1}\Vert_p\Vert\Delta A\Vert_p$$
 		Für alle $p \in [0, \infty]$.
 	\end{theorem}
+	\section{Interpolation}
+	\begin{definition}[Interpolation]
+		Gegeben Stützpunkte $(x_1, f_1), ..., (x_n, f_n)$ finde $f$ in einer bestimmten Klasse von Funktionen, sodass $f(x_i) = f_i \ \ \forall i$ 
+	\end{definition}
+	Die bekanntesten Formen von Interpolation sind:
+	\begin{enumerate}
+		\item \textbf{Polynominterpolation}: $f\in \mathbb{P}^n$
+		\item \textbf{Spline-Interpolation}: $f$ ist stückweise polynomiell und gesamt $C^l$.
+		\item \textbf{Rationale Interpolation}: $f \in R_{k, l}\{\frac{\sum_{i=0}^k a_ix^i}{\sum_{i=0}^lb_ix^i}\, a_i, b_j \in \mathbb{R}\}$
+		\item \textbf{Trigonometrische Interpolation}: $f \in T_n := \{b_0 + \sum_{k=1}^na_ksin(2\pi kx) +\sum_{k=1}^nb_ksin(2\pi kx) \}$
+	\end{enumerate}
+	\begin{definition}[Lagrange-Polynom]
+		Zu den $n+1$ verschiedenen Stützstellen $x_0, ..., x_n$ sind die Lagrange-Polynome von Grad $n$ definiert als:
+		$$L_i(x) := \prod_{k=0, k\neq i}^n\frac{x-x_k}{x_i-x_k}$$
+	\end{definition}
+	\begin{theorem}[Polynominterpolation]
+		Das Interpolationspolynom $\pi_n$ zu den Stützstellen $x_0, ..., x_n$ ist eindeutig definiert als:
+		$$\pi_n(x) = \sum_{i=0}^{n}f_iL_i(x)$$
+	\end{theorem}
+	\begin{theorem}
+		Die Lagrange Polynome erfüllen die Partition der $1$:
+		$$\sum_{i=0}^{n}L_i(x) = 1$$
+	\end{theorem}
+	\begin{definition}[Vandermonde-Matrix]
+		Die Matrix $V_n\in \mathbb{R}^{n+1 \times n+1}$ mit Einträgen:
+		$$(V_n)_{i, j} = x_{i-1}^{j-1}$$
+		Heißt Vandermonde-Matrix zu den Stützstellen $x_0, ..., x_n$.
+	\end{definition}
+	\begin{theorem}
+		Es gilt:
+		$$\det V_n = \prod_{0 \leq i < j\leq n}(x_j-x_i)$$
+	\end{theorem}
+	\begin{theorem}
+		Das Interpolationspolynom ist auch durch $\sum_{k=0}^{n} a_kx^k$ gegeben wobei $\begin{pmatrix}
+			a_0\\
+			\vdots\\
+			a_n
+		\end{pmatrix}=: a = V_n\begin{pmatrix}
+			f_0\\
+			\vdots\\
+			f_n
+		\end{pmatrix}$
+	\end{theorem}
+	\begin{definition}[Knotenpolynom]
+		Zu den $n+1$ Stützstellen $x_0, ..., x_n$ definiert man das Knotenpolynom 
+		$$\omega_{n+1}(x)=\prod_{i=0}^n(x-x_i)$$
+	\end{definition}
+	\begin{theorem}
+		Falls der Interpoland $f$ aus $C^{n+1}$ kommt ost der Interpolationsfehler beschränkt durch:
+		$$\Vert f-\pi_n\Vert \leq \frac{\Vert\omega_{n+1}\Vert}{(n+1)!}\Vert f^{(n+1)}\Vert$$
+	\end{theorem}
+	
 \end{document}
