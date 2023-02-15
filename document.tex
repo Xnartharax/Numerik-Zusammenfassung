@@ -289,7 +289,7 @@
 	\end{theorem}
 	Der Beweis kann auf schwächere Bedingungen ausgweitet werden zum Beispiel sind mehrfache Eigenwerte auch erlaubt. Häufig kann die QR-Iteration auch auf nicht-symmetrische Matrizen angewendet werden, wenn sie in diesem Fall konvergiert dann allerdings nicht mehr gegen eine Diagonal-, sondern obere Dreiecksmatrix. \\
 	Der erste Schritt die Transformation mit $Q_0$ transformiert die Matrix in eine obere Hessenberg Matrix. Für eine Obere Hessenberg-Matrix ist die QR-Zerlegung in $O(n^2)$ berechenbar. Da auch ein einzelner Iterationschritt die Hessenberg Form erhält beschleunigt dies das Verfahren enorm. 
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{Berechnung von $Q_0$}
 		\begin{algorithmic}
 			\Require $A\in \mathbb{R}^{n\times n}$
@@ -307,8 +307,60 @@
 						A_{j-1, i} \\
 						A_{j, i}
 					\end{bmatrix})$
+				\State $A \leftarrow GA$
+				\State $Q_0 \leftarrow GQ_0$
 			\EndFor
 			\EndFor
 		\end{algorithmic}
 	\end{algorithm}
+	Weiterhin kann ein Shiftparameter eingeführt werden um das Verfahren zu beschleunigen idealerweise liegt dieser Shiftparameter möglichst nah an einem Eigenwert der Matrix $A$.
+	\begin{algorithm}[H]
+		\caption{QR-Iteration mit Shift}
+		\begin{algorithmic}
+			\Require $A\in \mathbb{R}^{n \times n}$
+			\State $A_0 \leftarrow Q_0^TAQ_0$ mit $Q\in U(n)$.
+			\For{$i=1,2,3, ...$}
+			\State $\mu_i \leftarrow \text{Shift}(A_i)$
+			\State Bestimme $Q_iR_i = A_{i-1} -\mu_i I$
+			\State $A_{i} \leftarrow R_iQ_i + \mu_i I$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Dabei können verschiedene Shiftstrategien angewandt werden:
+	\begin{enumerate}
+		\item \textbf{Rayleighquotienten-Shift}: $\mu_i := (A_i)_{n,n}$
+		\item \textbf{Wilikinson-Shift}: Bestimme die Eigenwerte $\hat\lambda_1, \hat\lambda_2$ von $\begin{bmatrix}
+			(A_i)_{n-1, n-1} & (A_i)_{n-1, n} \\
+			(A_i)_{n, n-1} & (A_i)_{n, n}
+		\end{bmatrix}$.
+		Wähle $\mu_i = \arg\max_{\mu \in \{\hat\lambda_1, \hat{\lambda_2}\}}\|\mu -(A_i)_{n,n}|$
+		\item \textbf{Random-Shift}: Wählre zufällig einen Shift aus.
+	\end{enumerate}
+	Der Rayleighshift produziert bei $A=\begin{bmatrix}
+		0 & 1 \\
+		1 & 0 
+	\end{bmatrix}$ als shift $0$ und landet somit in einem Deadend. Ähnlich schlägt der WIlkinson-Shift bei $A=\begin{bmatrix}
+		0 & 0 & 1\\
+		1 & 0 & 0 \\
+		0 & 1 & 0
+	\end{bmatrix}$ fehl. In diesen Situationen kommt der Random-Shift zum Einsatz. \\
+	Weiterhin kann das Verfahren beschleunigt werden, indem man, sobald $|(A_i)_{n, n-1}| \leq \text{TOL}$ nur noch mit $(A_i)_{1:m-1, 1:m-1}$ weiterrechnet. Diese Strategie heißt \textbf{Deflation}. \\
+	Um aus den berechneten Eigenwerten Eigenvektoren zu erhalten, kann man für wenige Eigenwerte die Inverse Vektoriteration mit Shift verwenden. Alternativ lassen sich die aus der QR-Zerlegung berechneten $Q_i$ verwenden.
+	\begin{theorem}[Eigenvektoren einer oberen Dreiecksmatrix]
+		Sei $R\in \mathbb{R}^n$ obere Dreiecksmatrix. Definiere:
+		$$R^{(i)} := (R)_{1:i-1,1:i-1}$$
+		$$\omega := (R)_{1:i-1,i}$$
+		Dann hat der $i$-te Eigenvektor von $R$ die Form:
+		$$v_i = \begin{pmatrix}
+			(R^(i))^{-1}\omega \\
+			-1 \\
+			0 \\
+			\vdots \\
+			0
+		\end{pmatrix}$$ 
+	\end{theorem}
+	\begin{theorem}[Eigenvektoren der QR-Zerlegung]
+		Seien $(Q_i)_{i\in[k]}$ die berechneten $Q_i$ einer QR-Iteration auf $A$mit $Q_0$ der Umformungsmatrix für die Hessenberg-Form. Dann ist $$A_k = Q_k^T...Q_1^TQ_0^TAQ_0Q_1...Q_k$$
+		Wir definieren $\hat{Q}_k := Q_0Q_1...Q_k$. Bei genügend hohem $k$ sollte $A_k$ fast gleich einer oberen Dreiecksmatrix $\hat{R}_k$ sein. Deren Eigenvektoren lassen sich berechnen nach dem obigen Satz. Dann sind die $\hat{Q}_kv_i$ die Eigenvektoren von $A$.
+	\end{theorem}
 \end{document}
