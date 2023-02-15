@@ -363,4 +363,13 @@
 		Seien $(Q_i)_{i\in[k]}$ die berechneten $Q_i$ einer QR-Iteration auf $A$mit $Q_0$ der Umformungsmatrix für die Hessenberg-Form. Dann ist $$A_k = Q_k^T...Q_1^TQ_0^TAQ_0Q_1...Q_k$$
 		Wir definieren $\hat{Q}_k := Q_0Q_1...Q_k$. Bei genügend hohem $k$ sollte $A_k$ fast gleich einer oberen Dreiecksmatrix $\hat{R}_k$ sein. Deren Eigenvektoren lassen sich berechnen nach dem obigen Satz. Dann sind die $\hat{Q}_kv_i$ die Eigenvektoren von $A$.
 	\end{theorem}
+	\begin{theorem}[Kondition des Eigenwertproblems für beliebige Matrizen]
+		Sei $A\in \mathbb{R}^{n\times n}$. Dann exisitiert eine Konstante  $C_A$ sodass für jede Störung $\Delta A$: 
+		$$\forall \mu \in \sigma(A+\Delta A) \exists \lambda_\mu\in \sigma(A): |\mu - \lambda_\mu| \leq C_A \max \{\Vert\Delta A\vert_2, \Vert \Delta A\Vert_2^{\frac{1}{n}}\}$$
+	\end{theorem}
+	\begin{theorem}[Bauer-Fike, Kondition des Eigenwertproblems für diagonalisierbare Matrizen]
+		Sei $A\in \mathbb{R}^{n\times n}$ reell diagonalisierbar durch $T^{-1}DT$, dann existiert für jede Störung $\Delta A$ und jedes $\mu \in \sigma(A+\Delta A)$ ein $\lambda_\mu\in \sigma(A)$ mit
+		$$|\mu-\lambda_mu|\leq \Vert T\Vert_p\Vert T^{-1}\Vert_p\Vert\Delta A\Vert_p$$
+		Für alle $p \in [0, \infty]$.
+	\end{theorem}
 \end{document}
