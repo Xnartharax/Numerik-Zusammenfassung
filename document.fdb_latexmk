@@ -1,7 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1676478854 "c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex" "document.pdf" "document" 1676483327
+["pdflatex"] 1676490054 "c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex" "document.pdf" "document" 1676490129
   "FehlerWilkinson.png" 1675786479 94028 e84d01e178dcd39e8c7e9d56c10a5329 ""
-  "c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex" 1676478852 20443 35447a6cc035bb65c500c5160e70a9fe ""
+  "aitken-neville.jpg" 1676488163 43706 e7c07f2291514c5ebde1390f803c4514 ""
+  "c:/Users/jonas/Nextcloud/Documents/Uni/Numerik/Zusammenfassung/document.tex" 1676490053 23978 97ded55dea20c85ac2802086381793f0 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1635588790 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1635588790 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1635590018 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -46,6 +47,7 @@
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb" 1635587824 31809 8670ca339bf94e56da1fc21c80635e2a ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1635587824 32762 7fee39e011c23b3589931effd97b9702 ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1635587825 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb" 1635587825 32915 7bf7720c61a5b3a7ff25b0964421c9b6 ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1635587825 32716 08e384dc442464e7285e891af9f45947 ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb" 1635587825 30457 bc0868ebece724ed7c3d37e3d9bff7bd ""
   "c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1635587825 34694 870c211f62cb72718a00e353f14f254d ""
@@ -93,8 +95,9 @@
   "c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1635594912 4401551 5ba9eaeb3d6050afa3135f1abcf2569c ""
   "c:/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1635595079 2805231 56fa232c263c8838b9ade448a376ad4f ""
   "c:/texlive/2021/texmf.cnf" 1635594885 713 e69b156964470283e0530f5060668171 ""
-  "document.aux" 1676478855 2629 05c4f1e7cc30ee0937171409d77ccf89 "pdflatex"
-  "document.tex" 1676478852 20443 35447a6cc035bb65c500c5160e70a9fe ""
+  "document.aux" 1676490056 3315 1ca6371f9158e7537757e71186980356 "pdflatex"
+  "document.tex" 1676490053 23978 97ded55dea20c85ac2802086381793f0 ""
+  "rungespikes.jpg" 1676483596 28857 49b5c70a166a5bc5622760de0ee8cf61 ""
   (generated)
   "document.pdf"
   "document.aux"

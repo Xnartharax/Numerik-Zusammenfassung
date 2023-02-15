@@ -420,8 +420,85 @@
 		$$\omega_{n+1}(x)=\prod_{i=0}^n(x-x_i)$$
 	\end{definition}
 	\begin{theorem}
-		Falls der Interpoland $f$ aus $C^{n+1}$ kommt ost der Interpolationsfehler beschränkt durch:
+		Falls der Interpoland $f$ aus $C^{n+1}$ kommt ist der Interpolationsfehler beschränkt durch:
 		$$\Vert f-\pi_n\Vert \leq \frac{\Vert\omega_{n+1}\Vert}{(n+1)!}\Vert f^{(n+1)}\Vert$$
 	\end{theorem}
-	
+	\begin{theorem}
+		Es gilt für jede beliebige Wahl von Punkten:
+		$$\Vert\omega\Vert \geq 2^{-n}$$
+	\end{theorem}
+	Bei äquidistanten Stützstellen treten beim Interpolieren von $f(x) = \frac{1}{1+25x^2}$ große Fehler in den Randbereichen auf.
+	\begin{figure}
+		\centering
+		\caption{Interpolations Fehler für $\pi_n$}
+		\includegraphics[scale=0.8]{rungespikes.jpg}
+	\end{figure}
+	Generell lässt sich keine generell optimale Knotenfolge finden. Allerdings kann $\Vert\omega_n\Vert$ minimiert werden. Dies geschieht durch die Chebychev-Punkte:
+	\begin{definition}
+		Die Chebychev-Polynome sind definiert als:
+		$$T_n (X) := \cos(n\arccos x)$$
+		Sie sind orthogonal bezüglich der Gewichtsfunktion $\frac{1}{\sqrt{1-x^2}}$. Sie besitzen die Nullstellen:
+		$$x_i^{(n+1)}= \cos(\frac{2i+1}{2n+2}\pi)$$
+		Diese werden auch als Chebychev-Punkte bezeichnet.
+	\end{definition}
+	\begin{theorem}[Dreiterm-Rekursion der Chebychev-Polynome]
+		$T_0 = 1, T_1(x), T_n(x) = 2xT_{n-1}(x)-T_{n-2}(x)$
+	\end{theorem}
+	\begin{theorem}
+		Für das Knotenpolynom $\omega_{n+1, cheb}$ zu den Chebychevpunkten gilt:
+		$$\Vert\omega_{n+1,cheb} \Vert= 2^{-n}$$
+	\end{theorem}
+	Die theoretischen Überlegungen zur Bestimmung des Interpolationspolynom sind numerisch nicht stabil.
+	\begin{algorithm}[H]
+		\caption{Auswertungschema von Aitken-Neville}
+		\begin{algorithmic}
+			\Require $n+1$ Stützstellen $(x_0, f_0), ..., (x_n, f_n)$, Auswertungsstelle $y$.
+			\State Setze $P_i(y) \leftarrow f_i$ für $i=0, ..., n$
+			\For{$i=1, ..., n$}
+			\For{$j=0, ..., n-i$}
+			\State $P_{j...j+i}(y) \leftarrow \frac{(y-x_j)P_{j+1...j+i}(y)-(y-x_{j+i})P_{j...j+i-1}(y)}{x_{j+i}- x_{j}}$
+			\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{figure}[H]
+		\centering
+		\caption{Darstellung des Aitken-Neville-Schema}
+		\includegraphics[scale=0.5]{aitken-neville.jpg}
+	\end{figure}
+	\begin{theorem}[Aufwand des Aitken-Neville-Verfahren]
+		Für $l$ verschiedene Funktionen, $m$ Auswertungsstellen und $n+1$ Stützstellen beträgt der Aufwand für das Aitken-Neville-Schema $O(lmn^2)$.
+	\end{theorem}
+	Das Aitken-Neville Schema ist stabil aber langsam, wenn mehrere Stellen ausgwertet werden sollen. Um dies zu beschleunigen kann das 
+	\begin{definition}[Newton-Darstellung eines Polynoms]
+		Die Darstellung eines Polynoms in der Form:
+		$$\pi_n(x) = c_0 + c_1(x-x_0) + c_2(x-x_0)(x-x_1) + ... + c_n(x-x_0)...(x-x_{n-1})$$
+	\end{definition}
+	\begin{algorithm}[H]
+		\caption{Newton'sche Dividierte Differenzen}
+		\begin{algorithmic}
+			\Require $n+1$ Stützstellen $(x_0, f_0), ..., (x_n, f_n)$
+			\State Setze $f[x_i]:=f_i$ für $i=0, ..., n$
+			\For{$i=1, ..., n$}
+			\For{$j=0, ..., n-i$}
+			\State $f[x_j...x_{j+i}] \leftarrow \frac{f[x_{j+1}...x_{n-i}]-f[x_{j}...x_{n-i-1}]}{x_{j+i}- x_{j}}$
+			\EndFor
+			\EndFor
+			\State $c_i \leftarrow f[x_0...f_i]$
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{algorithm}
+		\caption{Horner-Schema}
+		\begin{algorithmic}
+			\Require Polynom in Newton-Darstellung mit Koeffizienten $c_0, ..., c_n$, Auswertungsstelle $y$.
+			\State $p\leftarrow c_n$
+			\For{$k=n-1, ..., 0$}
+			\State $p \leftarrow p(y -x_k)+c_k$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}[Aufwand des Horner Schema]
+		Für $l$ verschiedene Funktionen, $m$ Auswertungsstellen und $n+1$ Stützstellen beträgt der Aufwand für das Aitken-Neville-Schema $O(l(mn+n^2))$.
+	\end{theorem}
+	Allerdings ist das Horner-Schema \textbf{nicht stabil} für große $n$.
 \end{document}
