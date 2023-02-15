@@ -101,10 +101,10 @@
 					&  & -s & c &  &  \\
 					&  &  &  & \ddots &  \\
 					&  &  &  &  & 1
-				\end{bmatrix} \leftarrow Givens(\begin{Bmatrix}
-						A_{ji-1} \\
-						A_{ji}
-					\end{Bmatrix})$
+				\end{bmatrix} \leftarrow Givens(\begin{bmatrix}
+						A_{j-1,i} \\
+						A_{j-1,i}
+					\end{bmatrix})$
 					\State $Q \leftarrow GQ$
 					\State $A \leftarrow GA$
 				\EndFor
@@ -287,5 +287,28 @@
 			\item $\lim_{k\to \infty} (A_k)_{ij} = \delta_{ij}\lambda_i$
 		\end{enumerate}
 	\end{theorem}
-	Der Beweis kann auf schwächere Bedingungen ausgweitet werden zum Beispiel sind mehrfache Eigenwerte auch erlaubt. Häufig kann die QR-Iteration auch auf nicht-symmetrische Matrizen angewendet werden, wenn sie in diesem Fall konvergiert dann allerdings nicht mehr gegen eine Diagonal-, sondern obere Dreiecksmatrix. 
+	Der Beweis kann auf schwächere Bedingungen ausgweitet werden zum Beispiel sind mehrfache Eigenwerte auch erlaubt. Häufig kann die QR-Iteration auch auf nicht-symmetrische Matrizen angewendet werden, wenn sie in diesem Fall konvergiert dann allerdings nicht mehr gegen eine Diagonal-, sondern obere Dreiecksmatrix. \\
+	Der erste Schritt die Transformation mit $Q_0$ transformiert die Matrix in eine obere Hessenberg Matrix. Für eine Obere Hessenberg-Matrix ist die QR-Zerlegung in $O(n^2)$ berechenbar. Da auch ein einzelner Iterationschritt die Hessenberg Form erhält beschleunigt dies das Verfahren enorm. 
+	\begin{algorithm}
+		\caption{Berechnung von $Q_0$}
+		\begin{algorithmic}
+			\Require $A\in \mathbb{R}^{n\times n}$
+			\State $Q_0 \leftarrow Id$
+			\For{$i=1, ..., n-1}$
+			\For{$j=n, i+2$}
+				\State$G : = \begin{bmatrix}
+					1 &  &  &  &  &  \\
+					& \ddots &  &  &  &  \\
+					&  & c & s &  &  \\
+					&  & -s & c &  &  \\
+					&  &  &  & \ddots &  \\
+					&  &  &  &  & 1
+				\end{bmatrix} \leftarrow Givens(\begin{bmatrix}
+						A_{j-1, i} \\
+						A_{j, i}
+					\end{bmatrix})$
+			\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
 \end{document}
