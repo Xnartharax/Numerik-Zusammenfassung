@@ -502,6 +502,7 @@
 		$$\Vert\omega_{n+1,cheb} \Vert= 2^{-n}$$
 	\end{theorem}
 	Die theoretischen Überlegungen zur Bestimmung des Interpolationspolynom sind numerisch nicht stabil.
+	\subsection{Auswertungsschemata}
 	\begin{algorithm}[H]
 		\caption{Auswertungschema von Aitken-Neville}
 		\begin{algorithmic}
@@ -563,7 +564,8 @@
 		Für die Stützstellen $(x_0, f_0), ..., (x_n, f_n)$ hat das Interpolationspolynom die Form:
 		$$\pi_n(x)=\omega_{n+1}(x)\sum_{i=1}^{n}\frac{\lambda_if_i}{x-x_i} = \frac{\sum_{i=1}^{n}\frac{\lambda_if_i}{x-x_i}}{\sum_{i=1}^{n}\frac{\lambda_i}{x-x_i}}$$
 	\end{theorem}
-	\begin{theorem}[Formen der baryzentrischen Gewichte] Die Gewichte haben folgende Form (abhängig von der Wahl der Stützstellen):
+	\begin{theorem}[Formen der baryzentrischen Gewichte] 
+		Die Gewichte haben folgende Form (abhängig von der Wahl der Stützstellen):
 		\begin{itemize}
 			\item Äquidistant: ($x_i = -1 + ih, h=2/n$) 
 			$$\lambda_i = \frac{(-1)^{n-i}}{h^n(n-i)!i!}$$
@@ -571,4 +573,82 @@
 			$$\lambda_i = (-1)^i\frac{2^n}{n+1}\sin(\frac{2i+1}{2n+2})$$
 		\end{itemize}
 	\end{theorem}
+	\begin{theorem}
+		Die Berechnung von $l$ Funktionen an $m$ Auswertungsstellen kostet $O(n^2+lmn)$ Schritte. Außerdem ist der Algorithmus stabil.
+	\end{theorem}
+	\subsection{Interpolationsfehler}
+	\begin{definition}[Lebesque-Konstante]
+		Wir definieren die \textbf{Lebesgue-Konstante} auf dem Intervall $[-1, 1]$ als:
+		$$\Lambda_n := \Vert\sum_{i=0}^n|L_i(.)|\Vert_\infty$$
+	\end{definition}
+	\begin{theorem}
+		Sei $\pi_n$ das Interpolationspolynom für $f$ und $\tilde{\pi_n}$ das für $\tilde{f}$ dann gilt:
+		$$\Vert\pi_n-\tilde{\pi_n}\Vert \leq \Lambda_n\Vert f- \tilde{f}\Vert$$
+	\end{theorem}
+	\begin{definition}[Stetigkeitsmodul]
+		Der \textbf{Stetigkeitsmodul} fon $f$ ist definiert als:
+		$$\omega(f, \delta) := \sup_{|x-y|<\delta}|f(x)-f(y)|$$
+	\end{definition}
+	\begin{theorem}
+		Für Lipschitz-stetige $f$ mit Lipschitzkonstante $L$ gilt: $\omega(f, \delta) \leq L\delta$.
+	\end{theorem}
+	\begin{theorem}[Interpolationsfehlerschranke durch Stetigkeitsmodul]
+		Es gilt folgende Abschätzung für den Fehler der besten Approximation:
+		$$\inf_{q\in \mathbb{P}^n}\Vert f-q\Vert \leq (1+\frac{\pi^2}{2})\omega(f, 1/n)$$
+	\end{theorem}
+	\begin{theorem}[Interpolationsfehlerschranke durch Bestappoximation]
+		Sei $p^*$ die beste polynomielle Approximation an $f$, dann gilt folgende Fehlerabschätzung für das Interpolationspolynom $\pi_n$:
+		$$\Vert f-\pi_n\vert \leq (1+\Lambda_n)\Vert f- p^*\Vert$$
+	\end{theorem}	
+	\begin{theorem}[Wachstumsschranken der Lebesgue-Konstanten]
+		Die Lebesgue-Konstanten sind durch folgende Schranken begrenzt.
+		\begin{itemize}
+			\item Für Chebychev-Punkte gilt: 
+			$$\frac{2}{\pi}\ln(n+1) \leq \Lambda_n \leq frac{2}{\pi}\ln(n+1)+1$$
+			\item Für äquidistante Punkte gilt:
+			$$Ce^{n/2}\leq \Lambda_n \sim \frac{2^{n+1}}{en\log n}$$
+		\end{itemize}
+	\end{theorem}
+	\begin{theorem}[De la Vallée Poussin]
+		Sei $f\in C$ und $p\in \mathbb{P}^n$ außerdem seien $x_0, ... x_{n+1}$ sodass: $(f(x_i)-p(x_i))(f(x_{i+1})- p(x_{i+1}) < 0)$. Dann gilt für die Bestapproximation $p^*$:
+		$$\Vert p^*-f\Vert\geq \min |f(x_i)- p(x_i)|$$
+	\end{theorem}
+	\begin{theorem}[Oszillationstheorem]
+		Sei $f\in C$ und $p\in \mathbb{P}^n$ zusätzlich seien $x_0, ...,x_{n+1}$, sodass:
+		\begin{itemize}
+			\item $f(x_i)-p(x_i) = - (f(x_{i+1})-p(x_{i+1}))$
+			\item $|f(x_0)-p(x_0)| = \Vert f-p\Vert$
+		\end{itemize}
+		Dann ist $p$ die Bestapproximation von $f$ in $\mathbb{P}^n$. Man nennt $p$ auch \textbf{MinMax-Polynom}.
+	\end{theorem}
+	\subsection{Spline-Interpolation}
+	\begin{definition}[Spline]
+		Sei $\Delta = \{a=x_0 < x_1 < ... < x_n = b\}$ ein Gitter auf $[a, b]$ Dann sind die Splineräume von Grad $k$ definiert als:
+		$$S_{\Delta, k} := \{v\in C^{k-1}([a, b]) : v|_{[x_i, x_{i+1}]}\in \mathbb{P}^k\}$$
+		$$S_{\Delta, 0} : = \{v|_{[x_i, x_{i+1}]} \in \mathbb{P}^0\}$$
+		Die Spline-Räume sind Vektorräume mit Dimension $n+k$.
+	\end{definition}
+	\begin{definition}[Unterarten des kubischen Splines]
+		Um einen kubischen Spline $s\in S_{\Delta, 3}$ zu $f\in C^2$ zu berechnen benötigt man weitere Nebenbedingugnen:
+		Dafür gibt es mehrere Möglichkeiten:
+		\begin{itemize}
+			\item Vollständiger Spline: $s'(x_0) = f'(x_0)$ und $s'(x_n) = f'(x_n)$
+			\item Natürlicher Spline: $s''(x_0) = s''(x_n) = 0$
+			\item Periodischer Spline: $s'(x_0) = s'(x_n)$ und $s''(x_0) = s''(x_n)$
+		\end{itemize}
+	\end{definition}
+	\begin{definition}[Momentendarstellung eines kubischen Splines]
+		Für $s \in S_{\Delta, 3}$ gilt $s'' \in S_{\Delta, 1}$. Seien die $N_i^2$ Basisfunktionen von $S_{\Delta, 1}$. Dann kann $s''$ dargestellt werden als:
+		$$s''(x) = \sum_{i=0}^{n}m_iN_i^2(x)$$
+		Die $m_i$ heißen \textbf{Momente}.
+	\end{definition}
+	\begin{definition}
+		Aus den Momenten kann $s$ berechnet werden als:
+		$$s(x)|_{[x_{i-1}, x_i]} = c_i ü d_i(x-\frac{x_{i-1}+x_i}{2}) +m_i\frac{(x-x_{i})^3}{6h_i} - m_{i-1}\frac{(x-x_{i-1})^3}{6h_i}$$
+		Dabei sei $h_i = x_i -x_{i-1}$ und 
+		$$c_i = \frac{f_i+f_{i-1}}{2}-\frac{h_i^2}{12}(m_i+m_{i-1})$$
+		$$d_i = \frac{f_i-f_{i-1}}{h_i}-\frac{h_i}{6}(m_i-m_{i-1})$$
+	\end{definition}
+	Die Momente lassen sich folgendermaßen ausrechnen:
+
 \end{document}
