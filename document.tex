@@ -22,6 +22,7 @@
 		Sei $(a_{ij})=A \in \mathbb{R}^{n\times n}$ dann sind die Eigenwerte von $A$ enthalten in $\bigcup_{i=1}^{n}S_i \subset \mathbb{C}$, dabei sind die $S_i := K(a_{ii}, \sum_{j=1, i\neq j}^{n})$. Wobei mindestens ein Eigenwert jeder Zusammenhangskomponente zugeordnet ist.
 	\end{theorem}
 	\section{Matrixfaktorisierung}
+	\subsection{Lösen einfacher Matrizen}
 	\begin{theorem}
 		Die Permutationsmatrizen, die unitären Matrizen, die invertierbaren Matrizen und die unteren/oberen Dreiecksmatrizen bilden jeweils unter Matrixmultiplikation eine Gruppe. Insbesondere sind ihre Inverse von der selben Klasse von Matrizen. 
 	\end{theorem}
@@ -44,6 +45,7 @@
 			\EndFor
 		\end{algorithmic}
 	\end{algorithm}
+	\subsection{LU-Zerlegung}
 	Glücklicherweise kann jede invertierbare Matrix (fast eindeutig) in solche Matrizen zerlegt werden. Dies geschieht Wahlweise durch eine LU-Zerlegung oder eine QR-Zerlegung.
 	\begin{algorithm}
 		\caption{LU-Zerlegung ohne Pivots}
@@ -76,6 +78,7 @@
 			\State $\tilde{L} = \sqrt{D}L$.
 		\end{algorithmic}
 	\end{algorithm}
+	\subsection{QR-Zerlegung}
 	Eine weitere Möglichkeit ist die der $QR$ Zerlegung. 
 	\begin{definition}[Givensrotation]
 		Für ein $a \in \mathbb{R}^2$ sei $Q=\begin{bmatrix}
@@ -286,6 +289,7 @@
 		$$\kappa(A^TA) = \kappa(R)^2$$
 	\end{theorem}
 	\section{Eigenwertapproximation}
+	\subsection{Vektoriteration}
 	Eine Einfache Idee um einen einzelnen Eigenwert mit Eigenwert einer Matrix $A\in \mathbb{R}^{n\times n}$ zu bestimmen, ist die Vektoriteration. Diese beruht darauf, dass Eigenräume hoffentlich anziehende Fixpunkte sind.
 	\begin{algorithm}
 		\caption{Vektoriteration}
@@ -319,6 +323,7 @@
 		\end{algorithmic}
 	\end{algorithm}
 	Der Aufwand hängt hier davon ab, wie oft der Shiftparameter $\mu$ neu berechnet wird, dann ist jedes Mal eine LU-Zerlegung mit $O(n^3)$ Schritten nötig. Ansonsten kostet jeder Schritt $O(n^2)$ Operation hauptsächlich für Vorwärts und Rückwärtsssubsitution. \\
+	\subsection{QR-Iteration}
 	Um alle Eigenwerte gleichzeitig zu bestimmen kann iterativ eine Schur-Zerlegung berechnet werden. Dies geschieht mit der QR-Iteration.
 	\begin{algorithm}[H]
 		\caption{QR-Iteration ohne Shift}
@@ -436,6 +441,7 @@
 		\item \textbf{Rationale Interpolation}: $f \in R_{k, l}\{\frac{\sum_{i=0}^k a_ix^i}{\sum_{i=0}^lb_ix^i}\, a_i, b_j \in \mathbb{R}\}$
 		\item \textbf{Trigonometrische Interpolation}: $f \in T_n := \{b_0 + \sum_{k=1}^na_ksin(2\pi kx) +\sum_{k=1}^nb_ksin(2\pi kx) \}$
 	\end{enumerate}
+	\subsection{Polynominterpolation}
 	\begin{definition}[Lagrange-Polynom]
 		Zu den $n+1$ verschiedenen Stützstellen $x_0, ..., x_n$ sind die Lagrange-Polynome von Grad $n$ definiert als:
 		$$L_i(x) := \prod_{k=0, k\neq i}^n\frac{x-x_k}{x_i-x_k}$$
@@ -650,5 +656,73 @@
 		$$d_i = \frac{f_i-f_{i-1}}{h_i}-\frac{h_i}{6}(m_i-m_{i-1})$$
 	\end{definition}
 	Die Momente lassen sich folgendermaßen ausrechnen:
-
+	\begin{theorem}
+		Es gilt:
+		$$\mu_i m_{i-1} + 2m_i + (1-\mu_i)m_{i+1} = b_i$$
+		mit $\mu_i := h_i/(h_i+h_{i+1})$ und:
+		$$b_i := \frac{6}{h_i+h_{i+1}}(\frac{f_{i+1}}{h_i} -f_i (1/h_i + 1/h_{i+1})+ f_{i-1}/h_i)$$
+		Es gilt: 
+		\begin{enumerate}
+			\item Vollständiger kubischer Spline:
+			$$\begin{bmatrix}
+				2 & 1 & & & \\
+				\mu_1 & 2 & 1-\mu_1 & & \\
+				& \ddots& \ddots &\ddots &  \\
+				& & \mu_{n-1} & 2 & 1-\mu_{n-1} \\
+				& & & 1 & 2
+			\end{bmatrix} \begin{pmatrix}
+				m_0\\
+				\vdots\\
+				\vdots\\
+				\vdots \\
+				m_n
+			\end{pmatrix} =  \begin{pmatrix}
+				b_0\\
+				\vdots\\
+				\vdots\\
+				\vdots \\
+				b_n
+			\end{pmatrix}$$
+		\item Natürlicher kubischer Spline: Hier ist $m_0=m_n0$ und:
+		$$\begin{bmatrix}
+			2 & 1-\mu_1 & & & \\
+			\mu_2 & 2 & 1-\mu_2 & & \\
+			& \ddots& \ddots &\ddots &  \\
+			& & \mu_{n-2} & 2 & 1-\mu_{n-2} \\
+			& & & \mu_{n-1} & 2
+		\end{bmatrix} \begin{pmatrix}
+			m_1\\
+			\vdots\\
+			\vdots\\
+			\vdots \\
+			m_{n-1}
+		\end{pmatrix} =  \begin{pmatrix}
+			b_1\\
+			\vdots\\
+			\vdots\\
+			\vdots \\
+			b_{n-1}
+		\end{pmatrix}$$
+		\item periodischer Spline: Hier ist $m_n = m_0$
+		$$\begin{bmatrix}
+			2 & 1-\mu_n & & & \mu_n\\
+			\mu_1 & 2 & 1-\mu_1 & & \\
+			& \ddots& \ddots &\ddots &  \\
+			& & \mu_{n-2} & 2 & 1-\mu_{n-2} \\
+			&1-\mu_{n-1} & & \mu_{n-1} & 2
+		\end{bmatrix} \begin{pmatrix}
+			m_0\\
+			\vdots\\
+			\vdots\\
+			\vdots \\
+			m_{n-1}
+		\end{pmatrix} =  \begin{pmatrix}
+			b_0\\
+			\vdots\\
+			\vdots\\
+			\vdots \\
+			b_{n-1}
+		\end{pmatrix}$$
+		\end{enumerate}
+	\end{theorem}
 \end{document}

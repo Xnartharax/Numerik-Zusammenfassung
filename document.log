@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.30)  16 FEB 2023 14:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.10.30)  16 FEB 2023 15:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -225,226 +225,232 @@ Overfull \hbox (8.24828pt too wide) in paragraph at lines 22--23
  []
 
 
-Overfull \hbox (13.66241pt too wide) in paragraph at lines 28--64
+Overfull \hbox (13.66241pt too wide) in paragraph at lines 29--48
 \T1/cmr/m/n/10 aus dem End-schritt des Lösens von Gle-ichungssys-te-men mit dem Gauÿ-Algorithmus
  []
 
 [1
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (12.77612pt too wide) in paragraph at lines 116--117
+Overfull \hbox (12.77612pt too wide) in paragraph at lines 119--120
 []\T1/cmr/m/it/10 Die House-holder Spiegelung für einen
  []
 
 [3]
-<FehlerWilkinson.png, id=28, 292.09125pt x 252.19218pt>
+<FehlerWilkinson.png, id=29, 292.09125pt x 252.19218pt>
 File: FehlerWilkinson.png Graphic file (type png)
 <use FehlerWilkinson.png>
-Package pdftex.def Info: FehlerWilkinson.png  used on input line 160.
+Package pdftex.def Info: FehlerWilkinson.png  used on input line 163.
 (pdftex.def)             Requested size: 292.09052pt x 252.19156pt.
 
-Overfull \hbox (3.29784pt too wide) in paragraph at lines 165--166
+Overfull \hbox (3.29784pt too wide) in paragraph at lines 168--169
 []\T1/cmr/m/it/10 Wir definieren für eine Tu-pel $\OML/cmm/m/it/10 T \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 A[]; A[]; :::; A[]\OT1/cmr/m/n/10 )$
  []
 
 [4 <./FehlerWilkinson.png>]
-Overfull \hbox (28.8043pt too wide) in paragraph at lines 195--196
+Overfull \hbox (28.8043pt too wide) in paragraph at lines 198--199
 []\T1/cmr/m/it/10 Sei $[]$ eine nu-merische Näherung
  []
 
 
-Overfull \hbox (18.74567pt too wide) in paragraph at lines 210--211
+Overfull \hbox (18.74567pt too wide) in paragraph at lines 213--214
 []\T1/cmr/m/it/10 Eine Nöherung $[]$ zu $\OML/cmm/m/it/10 f$ \T1/cmr/m/it/10 heiÿt \T1/cmr/bx/it/10 rück-wärtssta-
  []
 
 
-Overfull \hbox (14.23279pt too wide) in paragraph at lines 215--216
+Overfull \hbox (14.23279pt too wide) in paragraph at lines 218--219
 []\T1/cmr/m/it/10 Der Fehler eines Rück-
  []
 
 
-Overfull \hbox (10.54634pt too wide) in paragraph at lines 219--220
+Overfull \hbox (10.54634pt too wide) in paragraph at lines 222--223
 []
  []
 
 [5]
-Overfull \hbox (11.3257pt too wide) in paragraph at lines 225--226
+Overfull \hbox (11.3257pt too wide) in paragraph at lines 228--229
 []\T1/cmr/m/it/10 Sei $\OML/cmm/m/it/10 MN \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 A$ \T1/cmr/m/it/10 und $[]\OML/cmm/m/it/10 ; []$
  []
 
 
-Overfull \hbox (1.06941pt too wide) in paragraph at lines 228--230
+Overfull \hbox (1.06941pt too wide) in paragraph at lines 231--233
 \T1/cmr/m/it/10 Ähnliches gilt auch für die Cholesky-Zerlegung, je-doch nciht für die LU-Zerlegung 
  []
 
 
-Overfull \hbox (16.46826pt too wide) in paragraph at lines 248--249
+Overfull \hbox (16.46826pt too wide) in paragraph at lines 251--252
 []\T1/cmr/m/it/10 Gegeben ein Aus-gle-ich-sprob-lem $\OML/cmm/m/it/10 A; b$\T1/cmr/m/it/10 , nennt
  []
 
 
-Overfull \hbox (72.95471pt too wide) in paragraph at lines 253--254
+Overfull \hbox (72.95471pt too wide) in paragraph at lines 256--257
 []
  []
 
 [6] [7]
-Overfull \hbox (4.97096pt too wide) in paragraph at lines 336--337
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+
+ []
+
+
+Overfull \hbox (4.97096pt too wide) in paragraph at lines 341--342
 []\T1/cmr/m/it/10 Sei $\OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$ \T1/cmr/m/it/10 sym-metrisch und
  []
 
-
-Overfull \hbox (8.37668pt too wide) in paragraph at lines 343--368
+[8]
+Overfull \hbox (8.37668pt too wide) in paragraph at lines 348--373
 \T1/cmr/m/n/10 obere Hes-sen-berg Ma-trix. Für eine Obere Hessenberg-Matrix ist die QR-Zerlegung
  []
 
-[8]
-Overfull \hbox (40.70586pt too wide) in paragraph at lines 385--390
+
+Overfull \hbox (40.70586pt too wide) in paragraph at lines 390--395
 []\T1/cmr/bx/n/10 Wilikinson-Shift\T1/cmr/m/n/10 : Bes-timme die Eigen-werte $[]\OML/cmm/m/it/10 ; []$ \T1/cmr/m/n/10 von $[]$.
  []
 
-
-Overfull \hbox (17.53044pt too wide) in paragraph at lines 392--402
+[9]
+Overfull \hbox (17.53044pt too wide) in paragraph at lines 397--407
 \T1/cmr/m/n/10 Weiterhin kann das Ver-fahren beschle-u-nigt wer-den, in-dem man, sobald $\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 )[]\OMS/cmsy/m/n/10 j ^^T
  []
 
-[9]
-Overfull \hbox (9.92714pt too wide) in paragraph at lines 416--416
+
+Overfull \hbox (9.92714pt too wide) in paragraph at lines 421--421
 []\T1/cmr/m/it/10 Seien $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Q[]\OT1/cmr/m/n/10 )[]$ \T1/cmr/m/it/10 die berech-
  []
 
 
-Overfull \hbox (19.1503pt too wide) in paragraph at lines 416--416
+Overfull \hbox (19.1503pt too wide) in paragraph at lines 421--421
 \T1/cmr/m/it/10 neten $\OML/cmm/m/it/10 Q[]$ \T1/cmr/m/it/10 einer QR-Iteration auf $\OML/cmm/m/it/10 A$\T1/cmr/m/it/10 mit $\OML/cmm/m/it/10 Q[]$ \T1/cmr/m/it/10 der Um-for-mungs-ma-trix für die Hessenberg-
  []
 
 
-Overfull \hbox (19.32475pt too wide) in paragraph at lines 420--421
+Overfull \hbox (19.32475pt too wide) in paragraph at lines 425--426
 []
  []
 
 
-Overfull \hbox (122.301pt too wide) in paragraph at lines 424--425
+Overfull \hbox (122.301pt too wide) in paragraph at lines 429--430
 []
  []
 
 
-Overfull \hbox (0.92477pt too wide) in paragraph at lines 430--431
+Overfull \hbox (0.92477pt too wide) in paragraph at lines 435--436
 []\T1/cmr/m/it/10 Gegeben Stützpunkte $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; f[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; :::; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; f[]\OT1/cmr/m/n/10 )$ \T1/cmr/m/it/10 finde
  []
 
 [10]
-Overfull \hbox (1.2434pt too wide) in paragraph at lines 444--445
+Overfull \hbox (1.2434pt too wide) in paragraph at lines 450--451
 []\T1/cmr/m/it/10 Das In-ter-po-la-tion-spoly-nom $\OML/cmm/m/it/10 ^^Y[]$ \T1/cmr/m/it/10 zu den
  []
 
 
-Overfull \hbox (2.20314pt too wide) in paragraph at lines 452--453
+Overfull \hbox (2.20314pt too wide) in paragraph at lines 458--459
 []\T1/cmr/m/it/10 Die Ma-trix $\OML/cmm/m/it/10 V[] \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 R[]$ \T1/cmr/m/it/10 mit Ein-
  []
 
 
-Overfull \hbox (1.35114pt too wide) in paragraph at lines 472--473
+Overfull \hbox (1.35114pt too wide) in paragraph at lines 478--479
 []\T1/cmr/m/it/10 Zu den $\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 + 1$ \T1/cmr/m/it/10 Stützstellen $\OML/cmm/m/it/10 x[]; :::; x[]$ \T1/cmr/m/it/10 definiert
  []
 
-<rungespikes.jpg, id=55, 435.12563pt x 194.22563pt>
+[11]
+<rungespikes.jpg, id=60, 435.12563pt x 194.22563pt>
 File: rungespikes.jpg Graphic file (type jpg)
 <use rungespikes.jpg>
-Package pdftex.def Info: rungespikes.jpg  used on input line 487.
+Package pdftex.def Info: rungespikes.jpg  used on input line 493.
 (pdftex.def)             Requested size: 348.10097pt x 155.3807pt.
 
-Overfull \hbox (3.10097pt too wide) in paragraph at lines 487--488
+Overfull \hbox (3.10097pt too wide) in paragraph at lines 493--494
  [][] 
  []
 
-[11]
-Overfull \hbox (62.69278pt too wide) in paragraph at lines 498--499
+
+Overfull \hbox (62.69278pt too wide) in paragraph at lines 504--505
 []$\OML/cmm/m/it/10 T[] \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; T[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; T[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) =
  []
 
-<aitken-neville.jpg, id=60, 538.26094pt x 287.57437pt>
+<aitken-neville.jpg, id=61, 538.26094pt x 287.57437pt>
 File: aitken-neville.jpg Graphic file (type jpg)
 <use aitken-neville.jpg>
-Package pdftex.def Info: aitken-neville.jpg  used on input line 521.
+Package pdftex.def Info: aitken-neville.jpg  used on input line 527.
 (pdftex.def)             Requested size: 269.1298pt x 143.78683pt.
 [12 <./rungespikes.jpg>]
-Overfull \hbox (6.81319pt too wide) in paragraph at lines 524--525
+Overfull \hbox (6.81319pt too wide) in paragraph at lines 530--531
 []\T1/cmr/m/it/10 Für $\OML/cmm/m/it/10 l$ \T1/cmr/m/it/10 ver-schiedene
  []
 
 
-Overfull \hbox (12.8026pt too wide) in paragraph at lines 528--529
+Overfull \hbox (12.8026pt too wide) in paragraph at lines 534--535
 []\T1/cmr/m/it/10 Die Darstel-lung eines
  []
 
 [13 <./aitken-neville.jpg>]
-Overfull \hbox (19.38701pt too wide) in paragraph at lines 560--561
+Overfull \hbox (19.38701pt too wide) in paragraph at lines 566--567
 []\T1/cmr/m/it/10 Wir definieren die \T1/cmr/bx/it/10 baryzen-trischen
  []
 
 
-Overfull \hbox (6.44177pt too wide) in paragraph at lines 564--565
+Overfull \hbox (6.44177pt too wide) in paragraph at lines 570--571
 []\T1/cmr/m/it/10 Für
  []
 
 
-Overfull \hbox (8.90216pt too wide) in paragraph at lines 568--569
+Overfull \hbox (8.90216pt too wide) in paragraph at lines 574--575
 []\T1/cmr/m/it/10 Die Gewichte haben
  []
 
 
-Overfull \hbox (0.98544pt too wide) in paragraph at lines 577--578
+Overfull \hbox (0.98544pt too wide) in paragraph at lines 583--584
 []\T1/cmr/m/it/10 Die Berech-nung von $\OML/cmm/m/it/10 l$ \T1/cmr/m/it/10 Funk-tio-nen an $\OML/cmm/m/it/10 m$ \T1/cmr/m/it/10 Auswer-tungsstellen kostet
  []
 
 
-Overfull \hbox (18.96208pt too wide) in paragraph at lines 581--582
+Overfull \hbox (18.96208pt too wide) in paragraph at lines 587--588
 []\T1/cmr/m/it/10 Wir definieren die \T1/cmr/bx/it/10 Lebesgue-Konstante
  []
 
 [14]
-Overfull \hbox (6.97913pt too wide) in paragraph at lines 596--597
+Overfull \hbox (6.97913pt too wide) in paragraph at lines 602--603
 []\T1/cmr/m/it/10 Es
  []
 
 
-Overfull \hbox (2.53163pt too wide) in paragraph at lines 600--601
+Overfull \hbox (2.53163pt too wide) in paragraph at lines 606--607
 []
  []
 
 
-Overfull \hbox (30.77736pt too wide) in paragraph at lines 604--605
+Overfull \hbox (30.77736pt too wide) in paragraph at lines 610--611
 []\T1/cmr/m/it/10 Die Lebesgue-
  []
 
 [15]
-Overfull \hbox (21.24358pt too wide) in paragraph at lines 632--634
+Overfull \hbox (21.24358pt too wide) in paragraph at lines 638--640
 []\T1/cmr/m/it/10 Um einen ku-bis-chen Spline
  []
 
 
-Overfull \hbox (1.27283pt too wide) in paragraph at lines 641--642
+Overfull \hbox (1.27283pt too wide) in paragraph at lines 647--648
 []\T1/cmr/m/it/10 Für $\OML/cmm/m/it/10 s \OMS/cmsy/m/n/10 2
  []
 
 
-LaTeX Warning: Command \" invalid in math mode on input line 647.
+LaTeX Warning: Command \" invalid in math mode on input line 653.
 
 Missing character: There is no ü in font cmr10!
-[16] (./document.aux) ) 
+[16] [17] (./document.aux) ) 
 Here is how much of TeX's memory you used:
  4719 strings out of 478579
  64329 string characters out of 5857457
- 565285 words of memory out of 5000000
+ 567285 words of memory out of 5000000
  22559 multiletter control sequences out of 15000+600000
  421354 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,13n,66p,417b,335s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,13n,66p,417b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbi1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on document.pdf (16 pages, 522537 bytes).
+Output written on document.pdf (17 pages, 527251 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 175 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

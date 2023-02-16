@@ -343,6 +343,7 @@ INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 OUTPUT document.pdf
 INPUT c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
@@ -363,7 +364,6 @@ INPUT ./rungespikes.jpg
 INPUT rungespikes.jpg
 INPUT ./rungespikes.jpg
 INPUT ./rungespikes.jpg
-INPUT c:/texlive/2021/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT ./aitken-neville.jpg
 INPUT ./aitken-neville.jpg
 INPUT aitken-neville.jpg
