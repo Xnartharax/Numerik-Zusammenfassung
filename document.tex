@@ -365,7 +365,7 @@
 						A_{j-1, i} \\
 						A_{j, i}
 					\end{bmatrix})$
-				\State $A \leftarrow GA$
+				\State $A \leftarrow GAG^T$
 				\State $Q_0 \leftarrow GQ_0$
 			\EndFor
 			\EndFor
@@ -723,6 +723,35 @@
 			\vdots \\
 			b_{n-1}
 		\end{pmatrix}$$
+		\end{enumerate}
+	\end{theorem}
+	\begin{theorem}[Fehler der Spline-Interpolation]
+		Für $f\in C^4$ und den vollständigen kubischen Spline $s\in S_{\Delta, 3}$gilt: $$ \Vert (f-s)^{(k)}\Vert \leq Ch^{4-k} \Vert f^{(4)}\Vert $$
+		Dabei ist $h := \max |x_{i+1} -x_i|$.
+	\end{theorem}
+	\begin{definition}[Kardinal-Spline-Basisfunktionen]
+		$S_{\Delta, 3}$ kann durch folgende Basis dargestellt werden:
+		\begin{itemize}
+			\item $K'_{-1} (x_0)=1, K_{-1}(x_i) = 0, K'_{-1}(x_n) = 0$
+			\item $K_i(x_j) = \delta_{ij}, K'_{i}(x_0) = K'_{i}(x_n)= 0$
+			\item \item $K'_{n+1} (x_0)=1, K_{-1}(x_i) = 0, K'_{-1}(x_n) = 0$
+		\end{itemize}
+	\end{definition}
+	Da diese globale Träger haben wird alternativ eine andere Basisdarstellung gewählt:
+	\begin{definition}[B-Splines]
+		Die \textbf{B-Spline Basisfunktionen} von $S_{\Delta, l}$ sind definiert durch die $B_{i, l+1}, i=1-l, n$:
+		$$B_i, 1(x) := \begin{cases}
+			1 & \text{falls }x \in [x_{i-1}, x_{i}],\\
+			0 & \text{sonst} 
+		\end{cases}$$
+		$$B_{i, k} := \frac{x-x_{i-1}}{x_{i+k-2}-x_{i-1}}B_{i, k-1}+  \frac{x_{i+k-1}-x}{x_{i+k-1}-x_{i}}B_{i+1, k-1}$$
+	\end{definition}
+	\begin{theorem}[Nützliche EIgenschaften der B-Spline Basisifunktionen]
+		Die B-Spline Basisfunktionen erfüllen folgende Eigenschaften:
+		\begin{enumerate}
+			\item $\text{supp} B_{i, k} \subset [s_{i-1}, x_{i+k-1}]$
+			\item $B_{i, k} \geq 0$
+			\item $\sum_{i=2-k}^n B_{i, k} = 1$
 		\end{enumerate}
 	\end{theorem}
 \end{document}
