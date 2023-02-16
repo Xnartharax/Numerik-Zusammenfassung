@@ -185,8 +185,61 @@
 	\end{definition}
 	\begin{theorem}
 		Die Kondition einer linearen Gleichung $Ax= b$ hängt nur von $A$ ab und ist:
-		$$\kappa(A) = ||A||||A^{-1}||$$
+		$$\kappa(A) = \Vert A\Vert\Vert A^{-1}\Vert$$
 	\end{theorem}
+	\begin{theorem}[Kondition einer $C^1$-Funktion]
+		Sei $f\in C^1(D), D\subset \mathbb{R}^n$ mit $f(x)\neq 0$, dann gilt für die Kondition:
+		$$\kappa(f,x) = \frac{\sum_{i=1}^n|\partial_if(x)|}{|f(x)|}$$
+	\end{theorem}
+	\begin{definition}[Vorwärts- und Rückwärtsfehler]
+		Sei $\hat{f}$ eine numerische Näherung der Funktion $f$, dann ist an $x$:
+		\begin{enumerate}
+			\item Der \textbf{Vorwärtsfehler}:
+			$$[[f(x)-\hat{f}(x)]]$$
+			\item Der \textbf{Rückwärtsfehler}: 
+			$$\inf_{\Delta x} \{[[\Delta x]] | f(x+\Delta x) = \hat{f}(x)\}$$
+		\end{enumerate}
+	\end{definition}
+	\begin{definition}[Stabilität]
+		Ein Algorithmus $\hat{f}$ zur Näherung von $f$ heißt \textbf{stabil} an $x$ bezüglich des Fehlermaßes $[[.]]$ falls ein $\tilde{x}$ existiert mit:
+		$$[[x-\tilde{x}]] = O(\epsilon_m)$$
+		$$[[\hat{f}(x) - f(\tilde{x})]] = O(\epsilon_m)$$
+		Dabei sei $\epsilon_m$ das Maschinenepsilon.
+	\end{definition}
+	\begin{definition}[Rückwärtsstabilität]
+		Eine Nöherung $\hat{f}$ zu $f$ heißt \textbf{rückwärtsstabil} an an $x$ bezüglich des Fehlermaßes $[[.]]$ falls ein $\tilde{x} = x+\Delta x$ existiert mit:
+		$$[[x-\tilde{x}]] = O(\epsilon_m)$$
+		$$\hat{f}(x) = f(\tilde{x})$$
+	\end{definition}
+	\begin{theorem}[Fehler rückwärtsstabiler Algorithmen]
+		Der Fehler eines Rückwärtsstabilen Algorithmus $\hat{f}$ hängt nur von der Konidion von $f$ ab:
+		$$[[\hat{f}]] = [[f(\tilde{x})-f(x)]] \leq c\kappa(f, x)\epsilon_m$$
+	\end{theorem}
+	\begin{theorem}[Rückwärtsfehler beim Lösen linearer Gleichungssysteme]
+		Sei $Ax=b$ ein zu lösendes Gleichungssystem. Definiere 
+		$$w(\tilde{x}) = \inf_E\{\frac{\Vert E\Vert_2}{\Vert A\Vert_2}: (A+E)\tilde{x}=b\}$$
+		als den relativen Rückwärtsfehler bezüglich der Matrix $A$. Dann gilt:
+		$$w(\tilde{x})=\frac{\Vert b-A\tilde{x}\Vert_2}{\Vert A\Vert_2\Vert \tilde{x}\Vert_2}$$
+	\end{theorem}
+	\begin{theorem}[Stabilität der Matrixmultiplikation]
+		Sei $MN =A$ und $\tilde{M}, \tilde{N}$ fehlerbehaftet mit relativen Fehler kleiner als $(\delta)$, dann ist:
+		$$\Vert \tilde{M}\tilde{N} - A\Vert \leq (2\delta+ \delta^2)\Vert M\Vert\Vert N \Vert$$.
+		Daraus folgt, dass die QR-Zerlegung stabil bezüglich des relativen Fehlermaßes ist:
+		$$\frac{\Vert \tilde{Q}\tilde{R} - A\Vert}{\Vert A\Vert} \leq \frac{1\Vert A\Vert}{\Vert A\Vert} = 1$$
+		Ähnliches gilt auch für die Cholesky-Zerlegung, jedoch nciht für die LU-Zerlegung
+	\end{theorem}
+	\begin{algorithm}[H]
+		\caption{Nachiteration}
+		\begin{algorithmic}
+			\Require Gleichungssystem $Ax=b$
+			\State Zerlege $LU =PA$
+			\State Berechne $LU\tilde{x^{(0)}= Pb}$ durch Vorwärts-/Rückwärtsssubsitution
+			\For{$i=1,..., k$}
+			\State Berechne $LU\Delta x^{(i)} = P(b-Ax^{(i-1)})$
+			\State $x^{(i)}\leftarrow x^{(i-1)} + \Delta x^{(i)}$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
 	\section{Ausgleichsrechnung}
 	\begin{definition}[Lineares Ausgleichsproblem]
 		Sei $A\in \mathbb{R}^{n\times n}, b\in \mathbb{R}^n$ mit $m\leq n$. Gesucht ist $x\in \mathbb{R}^m$. Sodass $$||Ax-b||_2$$ minimiert wird. Es wird im Generellen angenommen, dass $Rang(A) = m$.
@@ -473,6 +526,7 @@
 	\begin{definition}[Newton-Darstellung eines Polynoms]
 		Die Darstellung eines Polynoms in der Form:
 		$$\pi_n(x) = c_0 + c_1(x-x_0) + c_2(x-x_0)(x-x_1) + ... + c_n(x-x_0)...(x-x_{n-1})$$
+		Heißt \textbf{Newton'sche Darstellung}.
 	\end{definition}
 	\begin{algorithm}[H]
 		\caption{Newton'sche Dividierte Differenzen}
@@ -500,5 +554,21 @@
 	\begin{theorem}[Aufwand des Horner Schema]
 		Für $l$ verschiedene Funktionen, $m$ Auswertungsstellen und $n+1$ Stützstellen beträgt der Aufwand für das Aitken-Neville-Schema $O(l(mn+n^2))$.
 	\end{theorem}
-	Allerdings ist das Horner-Schema \textbf{nicht stabil} für große $n$.
+	Allerdings ist das Horner-Schema \textbf{nicht stabil} für große $n$. Der Zugang über die baryzentrische Darstellung bietet dem Abhilfe und noch größere Effizienz.
+	\begin{definition}[baryzentrische Gewichte]
+		Wir definieren die \textbf{baryzentrischen Gewichte}  zu den Stützstellen $x_0, ..., x_n$ als:
+		$$\lambda_i := \frac{1}{\prod_{k=0, k\neq i}^n(x_i-x_k)} = \frac{1}{\omega_{n+1}'(x_i)}$$
+	\end{definition}
+	\begin{theorem}[baryzentrische Darstellung des Lagrange-Polynoms]
+		Für die Stützstellen $(x_0, f_0), ..., (x_n, f_n)$ hat das Interpolationspolynom die Form:
+		$$\pi_n(x)=\omega_{n+1}(x)\sum_{i=1}^{n}\frac{\lambda_if_i}{x-x_i} = \frac{\sum_{i=1}^{n}\frac{\lambda_if_i}{x-x_i}}{\sum_{i=1}^{n}\frac{\lambda_i}{x-x_i}}$$
+	\end{theorem}
+	\begin{theorem}[Formen der baryzentrischen Gewichte] Die Gewichte haben folgende Form (abhängig von der Wahl der Stützstellen):
+		\begin{itemize}
+			\item Äquidistant: ($x_i = -1 + ih, h=2/n$) 
+			$$\lambda_i = \frac{(-1)^{n-i}}{h^n(n-i)!i!}$$
+			\item Chebychev: ($x_i = \cos(\frac{2i+1}{2n+2}\pi)$)
+			$$\lambda_i = (-1)^i\frac{2^n}{n+1}\sin(\frac{2i+1}{2n+2})$$
+		\end{itemize}
+	\end{theorem}
 \end{document}
