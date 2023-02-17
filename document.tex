@@ -915,9 +915,124 @@
 			\EndFor
 			\For{$l=1, ..., n$}
 			\For{$k=l, ..., n$}
-				\State $A_{k, l} \leftarrow \frac{4^{l+1A_{k, l-1} -A_{k-1, l-1}}}{4^{l+1}-1}$
+				\State $A_{k, l} \leftarrow \frac{4^{l+1}A_{k, l-1} -A_{k-1, l-1}}{4^{l+1}-1}$
 			\EndFor
 			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\section{Lösung nichtlinearer Gleichungssysteme}
+	\begin{algorithm}
+		\caption{Bisektionsverfahren}
+		\begin{algorithmic}
+			\Require $f, x_0, x_1$ und $f(x_0)f(x_1) < 0$
+			\For{$k=1, 2, ...$}
+			\State $x_{k+1} \leftarrow \frac{1}{2}(x_k + x_{k-1})$
+			\If{$f(x_{k+1})f(x_{k-1}) < 0$}
+			\State $x_k \leftarrow x_{k-1}$
+			\EndIf
+			\EndFor 
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}[Konvergenz des Bisektionsverfahren]
+		Das Bisektionsverfahren konvergiert gegen eine Nullstelle $x^*$:
+		$$|x^* - x_{k+1}| \leq 2^{-k}|x_0-x_1|$$
+	\end{theorem}
+	\begin{algorithm}
+		\caption{Sekantenverfahren}
+		\begin{algorithmic}
+			\Require $f, x_0, x_1$
+			\For{$k=1, 2, ...$}
+			\State $x_{k+1} = x_k - \frac{x_k-x_{k-1}}{f(x_k)- f(x_{k-1})}f(x_k)$
+			\EndFor 
+		\end{algorithmic}
+	\end{algorithm}
+	Das Sekantenverfahren konvergiert, falls die Startwerte bereits nahe an einer Nullstelle $x^*$ liegen recht schnell, allerdings können Fehler auftreten, falls $f(x_{k-1}) = f(x_k)$.
+	\begin{algorithm}
+		\caption{Regula Falsi}
+		\begin{algorithmic}
+			\Require $f, x_0, x_1$ und $f(x_0)f(x_1) < 0$
+			\For{$k=1, 2, ...$}
+			\State $x_{k+1} = x_k - \frac{x_k-x_{k-1}}{f(x_k)- f(x_{k-1})}f(x_k)$
+			\If{$f(x_{k+1})f(x_{k-1}) < 0$}
+			\State $x_k \leftarrow x_{k-1}$
+			\EndIf
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}
+		Das Regula Falsi Verfahren konvergiert immer.
+	\end{theorem}
+	\begin{definition}[Konvergenzordnung]
+		Eine Folge $(x_k)_{k\in \mathbb{N}}$ heißt konvergent von Ordnung $p\geq 1$ gegen $x^*$ falls $c < \infty$ exisitiert, sodass:
+		$$\Vert x_{k+1} - x^*\Vert \leq c\Vert x_k -x^*\Vert^p$$
+		Für $p=1$ muss zusätzlich $c<1$ gelten.
+	\end{definition}
+	\begin{theorem}[Konvergenz einer Fixpunktiteration]
+		Sei $\Phi\in C^1$ und $x^*$ ein Fixpunkt. Die Fixpunktiteration von $\Phi$ in der Umgebung von $x^*$ ist:
+		\begin{itemize}
+			\item konvergent falls $|\Phi'(x^*)| < 1$
+			\item divergent falls $|\Phi'(x^*)| > 1$
+			\item konvergent von ordnung $p \geq 2$ falls $\Phi \in C^p$ und:
+			$$\Phi^{(l)}(x^*) = 0, \ \ \ l=1, 2, ..., p-1$$
+		\end{itemize}
+	\end{theorem}
+	\begin{algorithm}
+		\caption{Newton-Verfahren}
+		\begin{algorithmic}
+			\Require $F\in C^1$, Startwert $x_0$.
+			\For{$k=0, 1, ...$}
+			\State Löse $DF(x_k)\Delta x_k = F(x_k)$
+			\State $x_{k+1} \leftarrow x_k - \Delta x_k$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	\begin{theorem}
+		Falls für $DF$ ein $\omega$ existiert, sodass:
+		$$\Vert DF(x)^{-1}(DF(x+sv)- DF(x))v\Vert \leq s\omega\Vert v\Vert^2$$
+		Dann gilt für alle Startwerte $x_0 \in B_{\frac{2}{\omega}(x^*)}$, dass das Newton-Verfahren mindestens quadratisch gegen $x^*$ konvergiert.
+	\end{theorem}
+	\begin{algorithm}[H]
+		\caption{gedämpftes Newton-Verfahren}
+		\begin{algorithmic}
+		
+			\Require $F\in C^1$, Startwert $x_0$, Dämpfungsparameter $\gamma$.
+			\For{$k=0, 1, ...$}
+			\State Löse $DF(x_k)\Delta x_k = F(x_k)$
+			\State $x_{k+1} \leftarrow x_k - \gamma\Delta x_k$
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
+	Der Dämpfungsparameter kann natürlich in jedem Schritt angepasst werden.
+	\begin{theorem}
+		Das gedämpfte Newtonverfahren für $\Phi$ mit Parameter $\gamma$ ist äquivalent zum Newtonverfahren für $\Phi_\gamma(x) = (1-\gamma)x + \gamma \Phi(x)$ 
+	\end{theorem}
+	\begin{definition}[Inexaktes Newtonverfahren]
+		Hier wird $DF(x_k)\Delta x_k = F(x_k)$ in jedem Schritt nur näherungsweise gelöst.
+	\end{definition}
+	\begin{definition}[Newton-artiges Verfahren]
+		Hier wird $DF(x_k)$ durch $M_k$ approximiert.
+	\end{definition}
+	\begin{theorem}[Dennis-Moré-Bedingugn]
+		Für ein Newton-artiges Verfahren ist folgendes equivalent:
+		\begin{itemize}
+			\item Die Konvergenz ist superlinear und $F(x^*) = 0$
+			\item $\Vert (M_k - DF(x_k)\Delta x_k )\Vert = o(\Vert \Delta x_k \Vert)$
+		\end{itemize}
+	\end{theorem}
+	\begin{theorem}[Sherman-Morrison-Formel]
+		Sei $A$ invertierber, dann ist $A+uv^T$ genau dann invertierbar, wenn $1 + v^TAu \neq 0$. Dann gilt:
+		$$(A+uv^T)^{-1} = A^{-1} - \frac{A^{-1}uv^TA^{-1}}{1+v^TA^{-1}u}$$
+	\end{theorem}
+	\begin{algorithm}
+		\caption{BFGS-Algorithmus}
+		\begin{algorithmic}
+			\Require Startwert $x_0$ und Startinverse $B_0^{-1}$ (Approximation von $DF^{-1}(x_0)$, oder häufig auch identität), Schrittweiten $\lambda_k$
+			\For{$k=0,1, 2, ...$}
+			\State $\Delta x \leftarrow -\lambda_kB_k^{-1}F(x_k)$
+			\State $x_{k+1}\leftarrow x_k + \Delta x$
+			\State $\Delta F \leftarrow F(x_{k+1}) -F(x_k)$
+			\State $B_{k+1}^{-1} \leftarrow B_{k+1}^{-1} + (\Delta x -B^{-1}_k\Delta F)\frac{\Delta x^T B^{-1}_{k}}{\Delta x^T B^{-1}_{k}\Delta F}$
+			\EndFor 
 		\end{algorithmic}
 	\end{algorithm}
 \end{document}
