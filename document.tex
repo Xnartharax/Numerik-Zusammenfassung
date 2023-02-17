@@ -754,4 +754,29 @@
 			\item $\sum_{i=2-k}^n B_{i, k} = 1$
 		\end{enumerate}
 	\end{theorem}
+	\section{Quadratur}
+	\begin{definition}[Quadraturformel]
+		Eine \textbf{Quadraturformel} hat im allgemeinen die Form:
+		$$Q^a_b(f) := \sum_{i=0}^{n}w_if(x_i)$$
+		Sind die Gewichte $w_i := \int_a^bL_i(x)dx$, so ist die Quadraturformel vom \textbf{Interpolationstyp}.
+	\end{definition}
+	\begin{definition}[Exaktheitsgrad]
+		Eine Quadraturformel hat den \textbf{Exaktheitsgrad} $n$ falls sie für alle Polynome in $\mathbb{P}^n$ exakt ist, aber nicht für $x^{n+1}$
+	\end{definition}
+	\begin{definition}[symmetrische Quadraturformel]
+		Eine \textbf{symmetrische QF} erfüllt:
+		$$w_i = w_{n-i}, x_i-a=b-x_{n-i}$$
+	\end{definition}
+	\begin{theorem}[Aussagen über den Exaktheitsgrad]
+		\begin{enumerate}
+			\item Jede QF vom Interpolationstyp und mit $n+1$ Knoten hat mind. Exaktheitsgrad $n$. 
+			\item Außerdem ist der Exaktheitsgrad einer symmetrischen Quadraturformel ungerade.
+			\item Jede QF mit $n+1$ Knoten und mindestens Exaktheitsgrad $n$ muss vom Interpolationstyp sein.
+			\item Falls die Gewichte einer QF durch Interpolation bestimmt sind und die Knoten symmetrisch angeordnet sind. Dann ist die QF auch symmetrisch
+			\item Eine QF mit $n+1$ Knoten hat maximal den Exaktheitsgrad $2n+1$.
+			\item Die QF mit Exaktheitsgrad $2n+1$ bei $n+1$ Knoten ist eindeutig.
+			\item Für eine QF mit Exaktheitsgrad $\geq 2n$ müssen alle Gewichte positiv sein.
+		\end{enumerate}
+	\end{theorem}
+	
 \end{document}
