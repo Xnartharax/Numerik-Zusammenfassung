@@ -828,4 +828,96 @@
 		\end{cases}$.
 	\end{theorem}
 	\subsection{Gauß-Quadratur}
+	\begin{theorem}[Dreiterm-Rekursion]
+		Die orthogonalen Polynome für ein Skalarprodukt $\langle., .\rangle$ werden bestimmt durch:
+		$$p_{k+1} = (x-\alpha_k)p_k(x) - \beta_kp_{k-1}(x)$$
+		$$p_{-1}=0, p_0(x)=1$$
+		und:
+		$$\alpha_k=\frac{\langle x p_k, p_k\rangle}{\langle p_k, p_k\rangle}, \beta_k=\frac{\langle p_k, p_k\rangle}{\langle p_{k-1}, p_{k-1}\rangle}$$
+	\end{theorem}
+	\begin{definition}[Legendre Polynome]
+		Die Legendre Polynome sind orthogonal zu dem Skalarprodukt mit Gewichtugnsfunktion $w=1$. 
+		$$L_0(x)=1, L_1(x)=x$$
+		$$L_{k+1}(x) = \frac{2k+1}{k+1}xL_k(x) -\frac{k}{k+1}L_{k+1}(x)$$
+		Sie lassen sich auch folgendermaßen darstellen:
+		$$L_k(x) = \frac{(-1)^k}{2^k k!} \frac{d^k}{dx^k}(1-x^2)^k$$
+	\end{definition}
+	\begin{definition}[Gegenbauer-Polynome]
+		Die Gegenbauer-Polynome $G^\alpha_k$ sind die Orthogonalpolynome für $w(x) = (1-x^2)^{\alpha-1/2}$. \\
+		Die Legendre und Chebchev-Polynome sind Spezialfälle für $\alpha=1/2$ und $\alpha=0$. Außerdem gilt:
+		$$L'_n = G^{3/2}_{n-1}(x)$$
+	\end{definition}
+	\begin{theorem}
+		Die Dreiterm-Rekursion für die $G^{3/2}_k$ lautet:
+		$$G^{3/2}_0(x)=1, G^{3/2}_1(x)=3x$$
+		$$G^{3/2}_{k+1}(x) = \frac{2k+3}{k+1}xG^{3/2}_k(x) -\frac{k+2}{k+1}G^{3/2}_{k+1}(x)$$
+	\end{theorem}
+	\begin{definition}[Laguerre-Polynome]
+		Laguerre-Polynome $L_k$ sind orthogonal zu $w(x) = e^{-x}$.
+	\end{definition}
+	\begin{theorem}
+		Die Dreiterm-Rekursion für die Laguerre Polynome lautet:
+		$$L_{-1}(x)=0, L_1(x)= 1$$
+		$$L_{k+1}(x) = (2k+1-x)L_k(x) - k^2L_{k-1}(x)$$
+		Sie lassen sich auch folgendermaßen darstellen:
+		$$L_k(x)= e^x\frac{d^k}{dx^k}(e^{-x}x^k)$$
+	\end{theorem}
+	\begin{definition}[Hermite-Polynome]
+		Die Hermite-Polynome sind orthogonal zur Gewichtsfunktion $w(x) = e^{-x^2}$.
+	\end{definition}
+	\begin{theorem}
+		Die Hermite-Polynome folgen der Dreiterm-Rekursion:
+		$$H_{-1}(0), H_0(x)=1$$
+		$$H_{k+1}(x)=2xH_k(x)-2kH_{k-1}(x)$$
+	\end{theorem}
+	\begin{theorem}[Quadratur-Satz von Jacobi]
+		Eine QF mit $n+1$ Knoten ist had Exaktheitsgrad $n+m$, genau dann wenn das Knotenpolynom $\omega_{n+1}$ orthogonal auf $\mathbb{P}^{m-1}$ steht.
+	\end{theorem}
+	\begin{definition}[Gauß-(Lobatto)-Quadratur]
+		Bei der Gaußquadratur sind die Stützstellen die Nullstellen von $L_{n+1}$ und die Gewichte:
+		$$w_i = \frac{2}{(1-x_i^2)(L'_{n+1}(x_i))^2}$$
+		Für die Gauß-Lobatto Quadratur setzt man $x_0=-1, x_n=1$ an die Endpunkte des Intervalls. Die anderen Punkte sind die Nullstellen des $G_{n-1}^{3/2}= L'_n(x)$-Polynoms.
+		Die Gewichte sind:
+		$$w_i=\frac{2}{n(n+1)}\frac{1}{[L_n(x)]^2}$$
+	\end{definition}
+	\begin{definition}[Laguerre-Quadratur]
+		Um auf dem Intervall $(0, \infty)$ zu integrieren benutzt man die Laguerre-Quadratur. Dazu definiert man $\phi(x) = e^x f(x)$ und es gilt $\int_0^\infty e^{-x}\phi(x) = I(f)$
+		Man quadriere nun $\phi$ mit den Stützstellen als den Nullstellen des Laguerre-Polynoms: $L_{n+1}$ und den Gewichten:
+		 $$w_i = \frac{x_i}{(n+2)^2[L_{n+2}(x_i)]^2}$$
+	\end{definition}
+	\begin{definition}[Hermite-Quadratur]
+		Um auf dem Intervall $(-\infty, \infty)$ zu integrieren benutzt man die Laguerre-Quadratur. Dazu definiert man $\phi(x) = e^{-x^2} f(x)$ und es gilt $\int_0^\infty e^{-x^2}\phi(x) = I(f)$
+		Man quadriere nun $\phi$ mit den Stützstellen als den Nullstellen des Hermite-Polynoms: $H_{n+1}$ und den Gewichten:
+		 $$w_i = \frac{2^{n+2}(n+1)!\sqrt(\pi)}{[H_{n+2}(x_i)]^2}$$
+	\end{definition}
+	\subsection{Extrapolation}
+	\begin{definition}[Richardson-Extrapolation]
+		Ein numerisches Schema $A$ mit einer Entwicklung 
+		$$A(h) = q_0 +q_1h + ... + q_kh^k+ O(h^{k+1})$$
+		lässt sich durch extrapolation verbessern. Das Extrapolationsschema ist:
+		$$A_{k, 0} = A(\delta^kh)$$
+		$$A_{k, l+1} = \frac{A_{k, l} - \delta^{l+1}A_{k-1, l}}{1-\delta^{l+1}}$$
+	\end{definition}
+	\begin{theorem}
+		Durch das Anwenden des Extrapolationsschemas mit $\delta \in (0,1)$ erhält man:
+		$$A_{k, l}(h) = q_0 + O((\delta^kh)^{l+1})$$
+	\end{theorem}
+	\begin{theorem}[Euler-MacLaurin-Formel]
+		Sei $f\in C^{2n+2}$ und $q_0 = I(f)$ dann gilt für die zusammengestzte Trapezregel:
+		$$I_{1,m}(f) = q_0 + \sum_{i=1}^{n}\alpha_{2i}h^{2i}_m + O(h_m^{2n+2})$$
+	\end{theorem}
+	\begin{algorithm}
+		\caption{Romberg-Quadratur}
+		\begin{algorithmic}
+			\Require $f$
+			\For{$k=1, ..., n$}
+			\State $A_{k, 0} \leftarrow I_{1, 2^k}(f)$
+			\EndFor
+			\For{$l=1, ..., n$}
+			\For{$k=l, ..., n$}
+				\State $A_{k, l} \leftarrow \frac{4^{l+1A_{k, l-1} -A_{k-1, l-1}}}{4^{l+1}-1}$
+			\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{algorithm}
 \end{document}
