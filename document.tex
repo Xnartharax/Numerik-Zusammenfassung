@@ -778,5 +778,54 @@
 			\item Für eine QF mit Exaktheitsgrad $\geq 2n$ müssen alle Gewichte positiv sein.
 		\end{enumerate}
 	\end{theorem}
-	
+	\subsection{Newton-Cotes-Formel}
+	\begin{definition}[Newton-Cotes QF]
+		Bei der Newton Cotes QF sind die Punkte äquidistant verteilt, man unterscheidet zwischen:
+		\begin{enumerate}
+			\item Der geschlossenen Newton Cotes Formel:
+			 $$x_i = a+ ih, h= \frac{b-a}{n}$$
+			\item Der offenen Newton Cotes Formel:
+			$$x_i = a+ (i+1)h, h= \frac{b-a}{n+2}$$
+		\end{enumerate}
+	\end{definition}
+	Geschlossene Quadraturformeln:
+	\begin{center}
+		\begin{tabular}{ c c c c}
+			\textbf{Name} &   \textbf{Gewichte} & \textbf{Fehler} & \textbf{Exaktheitsgrad}\\
+			Trapez  & $w_1=w_2=\frac{1}{2}$ & $-\frac{h^3}{12}f''(\xi)$ & 1\\
+			Cavalieri-Simpson & $w_0=\frac{1}{6}(b-a), w_1 = \frac{4}{6}(b-a)$ & $-\frac{h^5}{90}f^{(4)}(\xi)$& 3\\
+			Simpson 3/8 & $w_0 = \frac{3}{8}\frac{b-a}{3}, w_1 = \frac{9}{8}\frac{b-a}{3}$ & $-\frac{3h^5}{80}f^{(4)}(\xi)$ & 3 \\
+			Milne & $w_1=\frac{7}{90}, w_2=\frac{32}{90}, w_3=\frac{12}{90}$ & $-\frac{8}{945}h^7f^{(6)}(\xi)$ &5
+		\end{tabular}
+	\end{center}
+	\begin{theorem}[Fehler allgemeiner Newton-Cotes-Formeln]
+		Sei $n$ gerade und $f\in C^{n+2}$, dann gilt für den Quadraturfehler:
+		$$E_n(f) = \frac{M_n}{(n+2)!}h^{n+3}f^{(n+2)}(\xi)$$
+		Dabei ist:
+		$$M_n = \begin{cases}
+			\int_0^nt\hat{\omega}_{n+1}(t)dt & \text{für gechlossene QF}\\
+			\int_{-1}^{n+1}t\hat{\omega}_{n+1}(t)dt & \text{für offene QF}\\
+		\end{cases}$$
+		Wobei $\hat{\omega}_{n+1}(t) := \prod_{i=0}^n(t-i)$.
+		Für $n$ ungerade gilt:
+		$$E_n(f) = \frac{K_n}{(n+1)!}h^{n+2}f^{(n+1)}(\xi)$$
+		Dabei ist:
+		$$K_n = \begin{cases}
+			\int_0^n\hat{\omega}_{n+1}(t)dt & \text{für gechlossene QF}\\
+			\int_{-1}^{n+1}\hat{\omega}_{n+1}(t)dt & \text{für offene QF}\\
+		\end{cases}$$
+	\end{theorem}
+	Die Newton-Cotes Formeln können auf Teilintervalle angewandt werden.
+	\begin{theorem}
+		Für zusammengestzte Newton-Cotes Formeln mit $m$ Teilintervallen verliert die Fehlerabschätzung eine $h$-Potenz es gilt mit $H=\frac{b-a}{m}$. \\
+		Für $n$ gerade:
+		$$E_n(f) = \frac{(b-a)M_n}{\gamma^{n+3}_n(n+2)!}H^{n+2}f^{(n+2)}(\xi)$$
+		Für $n$ ungerade:
+		$$E_n(f) = \frac{(b-a)K_n}{\gamma^{n+2}_n(n+1)!}H^{n+1}f^{(n+1)}(\xi)$$
+		Wobei $\gamma_n= \begin{cases}
+			n+2 & \text{für QF offen} \\
+			n & \text{für QF geschlossen}
+		\end{cases}$.
+	\end{theorem}
+	\subsection{Gauß-Quadratur}
 \end{document}
