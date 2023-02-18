@@ -52,15 +52,15 @@
 		\begin{algorithmic}
 			\Require $(a_{ij}) = A \in GL(n)$
 			\For{$i\in 1:n$}
-				\State $l_{ii} \leftarrow 1$
 				\For{$j \in i+1:n$}
-					\State $l_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
+					\State $a_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
 					\For{$k\in i:n$}
 						\State $a_{jk} \leftarrow a_{jk} - a_{ji}a_{ji}$
 					\EndFor
 				\EndFor
 			\EndFor
 			\State $U = triu(A)$
+			\State $L = tril(A, -1) + Id $
 		\end{algorithmic}
 	\end{algorithm}
 	Mit Pivots erreicht man, dass jede invertierbare Matrix $A \in GL(n)$ zerlegt werden kann, sodass $PA = LU$. Dazu wählt man in jedem Schritt $i$ die Zeile $j = \arg \max_{j\geq i} |a^i_{ji}|$ und vertauscht diese mit der $i$-ten Zeile. 
@@ -71,16 +71,16 @@
 			\State $P = Id$
 			\For{$i\in 1:n$}
 				\State $p \leftarrow\arg\max_{i\leq k\leq n} |a_{ki}|$
-				\State $P, A, L \leftarrow P^{(p, i)} P, P^{(p, i)}A, P^{(p, i)}L$
-				\State $l_{ii} \leftarrow 1$
+				\State $P, A,\leftarrow P^{(p, i)} P, P^{(p, i)}A$
 				\For{$j \in i+1:n$}
-					\State $l_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
+					\State $a_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
 					\For{$k\in i:n$}
 					 	\State $a_{jk} \leftarrow a_{jk} - a_{ji}a_{ji}$
 					\EndFor
 				\EndFor
 			\EndFor
 			\State $U = triu(A)$
+			\State $L = tril(A, -1) + Id $
 		\end{algorithmic}
 	\end{algorithm}
 	\begin{theorem}[LU-ZErlegung mit Pivots]
