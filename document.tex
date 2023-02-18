@@ -326,10 +326,12 @@
 		\end{algorithmic}
 	\end{algorithm}
 	\begin{theorem}[Konvergenz der Vektoriteration]
-		Sei $A\in \mathbb{R}^{n \times n}$ mit EW $|\lambda_n| \leq ... \leq |\lambda_2| < |\lambda_1|$ und EV $(v_i)_{i\in [n]}$. Dann gilt:
+		Sei $A\in \mathbb{R}^{n \times n}$ symmetrisch mit EW $|\lambda_n| \leq ... \leq |\lambda_2| < |\lambda_1|$ und EV $(v_i)_{i\in [n]}$ und  $\beta_1 := v^T_1x^{(0)} \neq 0$. Dann gilt:
 		$$|\lambda^{(i)}-\lambda_1| \leq C_1(x^{(0)})\vert\frac{\lambda_2}{\lambda_1}\vert^{2i}$$
 		$$\Vert\text{sign}(\lambda_1)^ix^{(i)} - \text{sign}(\beta_1)v_1\Vert_2 \leq C_2(x^{(0)})|\frac{\lambda_2}{\lambda_1}|^i$$
-		Wobei $\beta_1 := v^T_1x^{(0)}$ und $C_1, C_2$ Konstanten sind die vom Startwertabhängen
+		und $C_1, C_2$ Konstanten sind die vom Startwertabhängen. Ist $A$ nicht symmetrisch aber noch normal gilt nur noch Konvergenz:
+		$$|\lambda^{(i)}-\lambda_1| \leq C_1(x^{(0)})\vert\frac{\lambda_2}{\lambda_1}\vert^{i}$$
+
 	\end{theorem}
 	Durch diese Methode lässt sich nur ein einzelner Eigenvektor und auch nur der zum Betragsmäßig größten Eigenwert bestimmen. Um andere Eigenvektor zu berechnen, nutzen wir, dass der Betragsmäßig größte Eignewert von $(A-\mu I)^{-1}$ der Kerwehrt des nächsten Egenwerts an $\mu$ ist.
 	\begin{algorithm}[H]
