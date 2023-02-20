@@ -19,7 +19,7 @@
 	\maketitle
 	\section{Grundlagen}
 	\begin{theorem}[Satz von Gerschgorin]
-		Sei $(a_{ij})=A \in \mathbb{R}^{n\times n}$ dann sind die Eigenwerte von $A$ enthalten in $\bigcup_{i=1}^{n}S_i \subset \mathbb{C}$, dabei sind die $S_i := K(a_{ii}, \sum_{j=1, i\neq j}^{n})$. Wobei mindestens ein Eigenwert jeder Zusammenhangskomponente zugeordnet ist.
+		Sei $(a_{ij})=A \in \mathbb{R}^{n\times n}$ dann sind die Eigenwerte von $A$ enthalten in $\bigcup_{i=1}^{n}S_i \subset \mathbb{C}$, dabei sind die $S_i := K(a_{ii}, \sum_{j=1, i\neq j}^{n}|a_{ij}|)$. Wobei mindestens ein Eigenwert jeder Zusammenhangskomponente zugeordnet ist.
 	\end{theorem}
 	\section{Matrixfaktorisierung}
 	\subsection{Lösen einfacher Matrizen}
@@ -53,8 +53,8 @@
 			\Require $(a_{ij}) = A \in GL(n)$
 			\For{$i\in 1:n$}
 				\For{$j \in i+1:n$}
-					\State $a_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
-					\For{$k\in i:n$}
+					\State $a_{ji} \leftarrow \frac{a_{ji}}{a_{ii}}$
+					\For{$k\in i+1:n$}
 						\State $a_{jk} \leftarrow a_{jk} - a_{ji}a_{ji}$
 					\EndFor
 				\EndFor
@@ -73,8 +73,8 @@
 				\State $p \leftarrow\arg\max_{i\leq k\leq n} |a_{ki}|$
 				\State $P, A,\leftarrow P^{(p, i)} P, P^{(p, i)}A$
 				\For{$j \in i+1:n$}
-					\State $a_{ji} \leftarrow -\frac{a_{ji}}{a_{ii}}$
-					\For{$k\in i:n$}
+					\State $a_{ji} \leftarrow \frac{a_{ji}}{a_{ii}}$
+					\For{$k\in i+1:n$}
 					 	\State $a_{jk} \leftarrow a_{jk} - a_{ji}a_{ji}$
 					\EndFor
 				\EndFor
@@ -239,7 +239,7 @@
 	\end{definition}
 	\begin{theorem}[Fehler rückwärtsstabiler Algorithmen]
 		Der Fehler eines Rückwärtsstabilen Algorithmus $\hat{f}$ hängt nur von der Konidion von $f$ ab:
-		$$[[\hat{f}]] = [[f(\tilde{x})-f(x)]] \leq c\kappa(f, x)\epsilon_m$$
+		$$[[\hat{f}(x) -  f(x)]] = [[f(\tilde{x})-f(x)]] \leq c\kappa(f, x)\epsilon_m$$
 	\end{theorem}
 	\begin{theorem}[Rückwärtsfehler beim Lösen linearer Gleichungssysteme]
 		Sei $Ax=b$ ein zu lösendes Gleichungssystem. Definiere 
@@ -268,7 +268,7 @@
 	\end{algorithm}
 	\section{Ausgleichsrechnung}
 	\begin{definition}[Lineares Ausgleichsproblem]
-		Sei $A\in \mathbb{R}^{n\times n}, b\in \mathbb{R}^n$ mit $m\leq n$. Gesucht ist $x\in \mathbb{R}^m$. Sodass $$||Ax-b||_2$$ minimiert wird. Es wird im Generellen angenommen, dass $Rang(A) = m$.
+		Sei $A\in \mathbb{R}^{m\times n}, b\in \mathbb{R}^n$ mit $m\leq n$. Gesucht ist $x\in \mathbb{R}^m$. Sodass $$||Ax-b||_2$$ minimiert wird. Es wird im Generellen angenommen, dass $Rang(A) = m$.
 	\end{definition}
 	\begin{definition}[Normalengleichung]
 		Gegeben ein Ausgleichsproblem $A, b$, nennt man:
@@ -281,7 +281,7 @@
 	\begin{algorithm}
 		\caption{Lösen des Ausgleichproblems mittels Normalengleichung}
 		\begin{algorithmic}
-			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^n$
+			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^m, m\leq n$
 			\State $L \leftarrow$ Cholesky$(A^TA)$
 			\State Löse $LL^Tx = A^Tb$ durch Vorwärts und Rückwärtsssubsitution.
 		\end{algorithmic}
@@ -291,7 +291,7 @@
 	\begin{algorithm}
 		\caption{Lösen des Ausgleichproblems mittels QR-Methode}
 		\begin{algorithmic}
-			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^n$
+			\Require Ausgleichsproblem $A\in \mathbb{R}^{n\times m}, b\in \mathbb{R}^m, m\leq n$
 			\State Zerlege $A= Q\hat{R}$ mit $\hat{R} = \begin{bmatrix}
 				R\\
 				0
@@ -320,7 +320,7 @@
 			\Require $A\in \mathbb{R}^{n\times n}$ und Startvektor $x^{(0)}\in \mathbb{R}^n$.
 			\For{$i=1,2,3,...$}
 				\State $y^{(i)} \leftarrow Ax^{(i-1)}$
-				\State $\lambda^(i-1) \leftarrow (x^(i-1))^Ty^{(i)}$
+				\State $\lambda^{(i-1)} \leftarrow (x^{(i-1)})^Ty^{(i)}$
 				\State $x^{(i)} \leftarrow \frac{y^{(i)}}{||y^{(i)}||}$
 			\EndFor
 		\end{algorithmic}
@@ -452,8 +452,8 @@
 	\end{theorem}
 	\begin{theorem}[Bauer-Fike, Kondition des Eigenwertproblems für diagonalisierbare Matrizen]
 		Sei $A\in \mathbb{R}^{n\times n}$ reell diagonalisierbar durch $T^{-1}DT$, dann existiert für jede Störung $\Delta A$ und jedes $\mu \in \sigma(A+\Delta A)$ ein $\lambda_\mu\in \sigma(A)$ mit
-		$$|\mu-\lambda_mu|\leq \Vert T\Vert_p\Vert T^{-1}\Vert_p\Vert\Delta A\Vert_p$$
-		Für alle $p \in [0, \infty]$.
+		$$|\mu-\lambda_\mu|\leq \Vert T\Vert_p\Vert T^{-1}\Vert_p\Vert\Delta A\Vert_p$$
+		Für alle $p \in [1, \infty]$.
 	\end{theorem}
 	\section{Interpolation}
 	\begin{definition}[Interpolation]
@@ -635,13 +635,13 @@
 		Die Lebesgue-Konstanten sind durch folgende Schranken begrenzt.
 		\begin{itemize}
 			\item Für Chebychev-Punkte gilt: 
-			$$\frac{2}{\pi}\ln(n+1) \leq \Lambda_n \leq frac{2}{\pi}\ln(n+1)+1$$
+			$$\frac{2}{\pi}\ln(n+1) \leq \Lambda_n \leq \frac{2}{\pi}\ln(n+1)+1$$
 			\item Für äquidistante Punkte gilt:
 			$$Ce^{n/2}\leq \Lambda_n \sim \frac{2^{n+1}}{en\log n}$$
 		\end{itemize}
 	\end{theorem}
 	\begin{theorem}[De la Vallée Poussin]
-		Sei $f\in C$ und $p\in \mathbb{P}^n$ außerdem seien $x_0, ... x_{n+1}$ sodass: $(f(x_i)-p(x_i))(f(x_{i+1})- p(x_{i+1}) < 0)$. Dann gilt für die Bestapproximation $p^*$:
+		Sei $f\in C$ und $p\in \mathbb{P}^n$ außerdem seien $x_0, ... x_{n+1}$ sodass: $(f(x_i)-p(x_i))(f(x_{i+1})- p(x_{i+1})) < 0$. Dann gilt für die Bestapproximation $p^*$:
 		$$\Vert p^*-f\Vert\geq \min |f(x_i)- p(x_i)|$$
 	\end{theorem}
 	\begin{theorem}[Oszillationstheorem]
@@ -675,7 +675,7 @@
 	\end{definition}
 	\begin{definition}
 		Aus den Momenten kann $s$ berechnet werden als:
-		$$s(x)|_{[x_{i-1}, x_i]} = c_i ü d_i(x-\frac{x_{i-1}+x_i}{2}) +m_i\frac{(x-x_{i})^3}{6h_i} - m_{i-1}\frac{(x-x_{i-1})^3}{6h_i}$$
+		$$s(x)|_{[x_{i-1}, x_i]} = c_i + d_i(x-\frac{x_{i-1}+x_i}{2}) +m_i\frac{(x-x_{i})^3}{6h_i} - m_{i-1}\frac{(x-x_{i-1})^3}{6h_i}$$
 		Dabei sei $h_i = x_i -x_{i-1}$ und 
 		$$c_i = \frac{f_i+f_{i-1}}{2}-\frac{h_i^2}{12}(m_i+m_{i-1})$$
 		$$d_i = \frac{f_i-f_{i-1}}{h_i}-\frac{h_i}{6}(m_i-m_{i-1})$$
@@ -734,7 +734,7 @@
 			\mu_1 & 2 & 1-\mu_1 & & \\
 			& \ddots& \ddots &\ddots &  \\
 			& & \mu_{n-2} & 2 & 1-\mu_{n-2} \\
-			&1-\mu_{n-1} & & \mu_{n-1} & 2
+			1-\mu_{n-1}& & & \mu_{n-1} & 2
 		\end{bmatrix} \begin{pmatrix}
 			m_0\\
 			\vdots\\
@@ -765,7 +765,7 @@
 	Da diese globale Träger haben wird alternativ eine andere Basisdarstellung gewählt:
 	\begin{definition}[B-Splines]
 		Die \textbf{B-Spline Basisfunktionen} von $S_{\Delta, l}$ sind definiert durch die $B_{i, l+1}, i=1-l, n$:
-		$$B_i, 1(x) := \begin{cases}
+		$$B_{i, 1 }(x) := \begin{cases}
 			1 & \text{falls }x \in [x_{i-1}, x_{i}],\\
 			0 & \text{sonst} 
 		\end{cases}$$
@@ -946,7 +946,7 @@
 		\end{algorithmic}
 	\end{algorithm}
 	\section{Lösung nichtlinearer Gleichungssysteme}
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{Bisektionsverfahren}
 		\begin{algorithmic}
 			\Require $f, x_0, x_1$ und $f(x_0)f(x_1) < 0$
@@ -962,7 +962,7 @@
 		Das Bisektionsverfahren konvergiert gegen eine Nullstelle $x^*$:
 		$$|x^* - x_{k+1}| \leq 2^{-k}|x_0-x_1|$$
 	\end{theorem}
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{Sekantenverfahren}
 		\begin{algorithmic}
 			\Require $f, x_0, x_1$
@@ -972,7 +972,7 @@
 		\end{algorithmic}
 	\end{algorithm}
 	Das Sekantenverfahren konvergiert, falls die Startwerte bereits nahe an einer Nullstelle $x^*$ liegen recht schnell, allerdings können Fehler auftreten, falls $f(x_{k-1}) = f(x_k)$.
-	\begin{algorithm}
+	\begin{algorithm}[H]
 		\caption{Regula Falsi}
 		\begin{algorithmic}
 			\Require $f, x_0, x_1$ und $f(x_0)f(x_1) < 0$
